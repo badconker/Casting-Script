@@ -287,7 +287,8 @@ Casting.mm.center.recupInfo = function() {
 						case 7 : // Nb de parties achevées
 							Casting.mm.center.info.partieEnd = text;
 						break;
-						case 10 : // Investisseurs
+						case 10 :
+						case 11 : // Investisseurs
 							Casting.mm.center.info.invest = $(this).html();
 						break;	
 						default:
