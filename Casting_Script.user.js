@@ -285,7 +285,7 @@ Casting.mm.center.recupInfo = function() {
 						case 7 : // Nb de parties achevées
 							Casting.mm.center.info.partieEnd = text;
 						break;
-						case 11 : // Investisseurs
+						case 10 : // Investisseurs
 							Casting.mm.center.info.invest = $(this).html();
 						break;	
 						default:
@@ -316,17 +316,24 @@ Casting.mm.center.dispNewInfo = function() {
 	var investHTML = $("<div>").html(Casting.mm.center.info.invest);
 	investHTML.find(".spanBox").remove();
 	investHTML.html(investHTML.html().split("</div><div").join("</div>, <div"));
-	var divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
-	"<div class=\"numb\">" + Math.floor((xp / lvlup)*100) + "%</div><div class=\"compframe\">" +
-	"<div class=\"fill\" style=\"width: " + Math.floor((xp / lvlup)*100) + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
-	"</div></div>" +
-	"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp)/25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp)/25)*25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
-	((Casting.mm.center.info.userInCast) ? "<div class=\"butWidth\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
-	"</div>" +
-	"<span class=\"spanBox\">Réalistion de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
-	"<span class=\"spanBox\">Rang :</span> <img src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + rang + ")</span><br>" +
-	"<span class=\"spanBox\">Prochain rang :</span> <img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + (rang + 1)+ ")</span><br>" +
-	"<span class=\"spanBox\">Nomdre d'acteurs max. :</span> " + max + " personnes<br>" +
+	console.log('investHTML',investHTML);
+	var divRangHTML = '';
+	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
+		divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
+			"<div class=\"numb\">" + Math.floor((xp / lvlup) * 100) + "%</div><div class=\"compframe\">" +
+			"<div class=\"fill\" style=\"width: " + Math.floor((xp / lvlup) * 100) + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
+			"</div></div>" +
+			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp) / 25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp) / 25) * 25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
+			((Casting.mm.center.info.userInCast) ? "<div class=\"butWidth\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
+			"</div>";
+	}
+	divRangHTML += "<span class=\"spanBox\">Réalistion de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
+		"<span class=\"spanBox\">Rang :</span> <img src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + rang + ")</span><br>";
+	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
+		divRangHTML += "<span class=\"spanBox\">Prochain rang :</span> <img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + (rang + 1)+ ")</span><br>";
+	}
+
+	divRangHTML += "<span class=\"spanBox\">Nomdre d'acteurs max. :</span> " + max + " personnes<br>" +
 	"<span class=\"spanBox\">Acteurs necessaire :</span> " + need + " personnes<br>" +
 	"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> " + Casting.mm.center.info.effect.length + " personnes<br>" +
 	"<div class=\"floatRejPret\">" + Casting.mm.center.info.btnRejPret + "</div>" +
