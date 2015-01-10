@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name        Casting Script
-// @namespace   Script Mush pour les Casting
-// @description Script Mush pour les Casting
+// @namespace   Script Mush pour les Castings
+// @description Script Mush pour les Castings
+// @downloadURL https://github.com/badconker/Casting-Script/raw/master/Casting_Script.user.js
 // @include     http://mush.vg/g/*
 // @include     http://mush.vg/group/*
 // @version     1
