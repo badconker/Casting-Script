@@ -318,7 +318,6 @@ Casting.mm.center.dispNewInfo = function() {
 	var investHTML = $("<div>").html(Casting.mm.center.info.invest);
 	investHTML.find(".spanBox").remove();
 	investHTML.html(investHTML.html().split("</div><div").join("</div>, <div"));
-	console.log('investHTML',investHTML);
 	var divRangHTML = '';
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
