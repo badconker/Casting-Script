@@ -194,6 +194,8 @@ Casting.mm.center.css = function() {
 		.floatRejPret {\
 			float: right;\
 			margin: 0px 15px 15px 0px;\
+			position:relative;\
+			top:-20px;\
 		}\
 		.xpcompletion .compframe {\
 			width : 280px;\
@@ -257,9 +259,9 @@ Casting.mm.center.recupInfo = function() {
 	$.each(Casting.mm.center.info.effectWait, function(index, data) { Casting.mm.center.info.effectWait[index] = $(this).parent().html()});
 	Casting.mm.center.info.effectPret = $("img[src=\"/img/icons/ui/ready.png\"]");
 	$.each(Casting.mm.center.info.effectPret, function(index, data) { Casting.mm.center.info.effectPret[index] = $(this).parent().html()});
-	Casting.mm.center.info.userInCast = (jQuery.inArray(Casting.mm.center.info.username, Casting.mm.center.info.effect)!=-1);
+	Casting.mm.center.info.userInCast = $(".twinstyle[name=\"Investissement\"]").find(".boxContent").children().length > 0;
 
-	Casting.mm.center.info.btnInvest = (Casting.mm.center.info.userInCast) ? $(".twinstyle[name=\"Investissement\"]").find(".butWidth").html() : false;
+	Casting.mm.center.info.btnInvest = (Casting.mm.center.info.userInCast) ? $(".twinstyle[name=\"Investissement\"]").find(".boxContent > div").html() : false;
 	Casting.mm.center.info.btnRejPret = $(".twinstyle[name=\"Mes Actions\"]").find(".boxContent").html();
 	$(".twinstyle").each(function() {
 		var name = $(this).find(".cornerright").text().replace(/\t/g, '').replace(/\n/g, '');
@@ -334,7 +336,6 @@ Casting.mm.center.dispNewInfo = function() {
 			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
 			"</div></div>" +
 			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp) / 25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp) / 25) * 25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
-			((Casting.mm.center.info.userInCast) ? "<div class=\"butWidth\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
 			"</div>";
 	}
 	divRangHTML += "<span class=\"spanBox\">Réalistion de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
@@ -347,6 +348,7 @@ Casting.mm.center.dispNewInfo = function() {
 	divRangHTML += "<span class=\"spanBox\">Nomdre d'acteurs max. :</span> " + max + " personnes<br>" +
 	"<span class=\"spanBox\">Acteurs necessaire :</span> " + need + " personnes<br>" +
 	"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> " + Casting.mm.center.info.effect.length + " personnes<br>" +
+		((Casting.mm.center.info.userInCast) ? "<div class=\"floatRejPret\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
 	"<div class=\"floatRejPret\">" + Casting.mm.center.info.btnRejPret + "</div>" +
 	"<span class=\"spanBox\">Nombre de tournages terminés :</span> " + Casting.mm.center.info.partieEnd + "<br>" +
 	"<span class=\"spanBox\">Investisseurs :</span> " + investHTML.html(); +
