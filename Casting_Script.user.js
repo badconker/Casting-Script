@@ -143,24 +143,24 @@ Casting.mm.center.INFO_RANGS = [];
 	Casting.mm.center.INFO_RANGS['Opéra'] = [];
 		Casting.mm.center.INFO_RANGS['Opéra']['rang'] = 11;
 		Casting.mm.center.INFO_RANGS['Opéra']['before'] = "Ballet National";
-		Casting.mm.center.INFO_RANGS['Opéra']['next'] = "Maison de production";
+		Casting.mm.center.INFO_RANGS['Opéra']['next'] = "Maison de Production";
 		Casting.mm.center.INFO_RANGS['Opéra']['max'] = 192;
 		Casting.mm.center.INFO_RANGS['Opéra']['need'] = 24;
 		Casting.mm.center.INFO_RANGS['Opéra']['lvlup'] = 2400;
 		Casting.mm.center.INFO_RANGS['Opéra']['img'] = "whos_ugly";
 		Casting.mm.center.INFO_RANGS['Opéra']['infotext'] = "Débloque l'option Jeu Sans Mush.Passe le nombre minimal de joueur pour lancer un vaisseau à 16.<br/>La taille maximale du casting passe à 192 joueurs.<br/><em>La classe internationale sur une lune de province.</em>";
-	Casting.mm.center.INFO_RANGS['Maison de production'] = [];
-		Casting.mm.center.INFO_RANGS['Maison de production']['rang'] = 12;
-		Casting.mm.center.INFO_RANGS['Maison de production']['before'] = "Opéra";
-		Casting.mm.center.INFO_RANGS['Maison de production']['next'] = "Société événementielle";
-		Casting.mm.center.INFO_RANGS['Maison de production']['max'] = 208;
-		Casting.mm.center.INFO_RANGS['Maison de production']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Maison de production']['lvlup'] = 2800;
-		Casting.mm.center.INFO_RANGS['Maison de production']['img'] = "fight";
-		Casting.mm.center.INFO_RANGS['Maison de production']['infotext'] = "La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>";
+	Casting.mm.center.INFO_RANGS['Maison de Production'] = [];
+		Casting.mm.center.INFO_RANGS['Maison de Production']['rang'] = 12;
+		Casting.mm.center.INFO_RANGS['Maison de Production']['before'] = "Opéra";
+		Casting.mm.center.INFO_RANGS['Maison de Production']['next'] = "Société événementielle";
+		Casting.mm.center.INFO_RANGS['Maison de Production']['max'] = 208;
+		Casting.mm.center.INFO_RANGS['Maison de Production']['need'] = 24;
+		Casting.mm.center.INFO_RANGS['Maison de Production']['lvlup'] = 2800;
+		Casting.mm.center.INFO_RANGS['Maison de Production']['img'] = "fight";
+		Casting.mm.center.INFO_RANGS['Maison de Production']['infotext'] = "La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>";
 	Casting.mm.center.INFO_RANGS['Société événementielle'] = [];
 		Casting.mm.center.INFO_RANGS['Société événementielle']['rang'] = 13;
-		Casting.mm.center.INFO_RANGS['Société événementielle']['before'] = "Maison de production";
+		Casting.mm.center.INFO_RANGS['Société événementielle']['before'] = "Maison de Production";
 		Casting.mm.center.INFO_RANGS['Société événementielle']['next'] = "Légende";
 		Casting.mm.center.INFO_RANGS['Société événementielle']['max'] = 224;
 		Casting.mm.center.INFO_RANGS['Société événementielle']['need'] = 24;
@@ -369,7 +369,7 @@ Casting.mm.center.dispNewInfo = function() {
 	"<span>" + Casting.mm.center.ScenarHTML("Orchestre") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Ballet National") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Opéra") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Maison de production") + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML("Maison de Production") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Société événementielle") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Légende") + "</span>" +
 	"";
