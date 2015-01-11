@@ -107,24 +107,24 @@ Casting.mm.center.INFO_RANGS = [];
 	Casting.mm.center.INFO_RANGS['Opéra-Bouffe'] = [];
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['rang'] = 7;
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['before'] = "Colleur d'affiche";
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['next'] = "Nain de jardins";
+		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['next'] = "Nains de jardin";
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['max'] = 128;
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['need'] = 24;
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['lvlup'] = 1100;
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['img'] = "swift_fungus";
 		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['infotext'] = "Débloque l'option Jeu Rapide qui porte les cycles à 2h.<br/>La taille maximale du casting passe à 128 joueurs.<br/><em>Vous savez enchaîner deux scènes sans que le décor s\'effondre.</em>";
-	Casting.mm.center.INFO_RANGS['Nain de jardins'] = [];
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['rang'] = 8;
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['before'] = "Opéra-Bouffe";
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['next'] = "Orchestre";
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['max'] = 144;
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['lvlup'] = 1400;
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['img'] = "dream_theater";
-		Casting.mm.center.INFO_RANGS['Nain de jardins']['infotext'] = "Débloque le départ manuel des vaisseaux pour ce casting.<br/>La taille maximale du casting passe à 144 joueurs.<br/><em>Vous animez les barbecues Martien efficacement.</em>";
+	Casting.mm.center.INFO_RANGS['Nains de jardin'] = [];
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['rang'] = 8;
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['before'] = "Opéra-Bouffe";
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['next'] = "Orchestre";
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['max'] = 144;
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['need'] = 24;
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['lvlup'] = 1400;
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['img'] = "dream_theater";
+		Casting.mm.center.INFO_RANGS['Nains de jardin']['infotext'] = "Débloque le départ manuel des vaisseaux pour ce casting.<br/>La taille maximale du casting passe à 144 joueurs.<br/><em>Vous animez les barbecues Martien efficacement.</em>";
 	Casting.mm.center.INFO_RANGS['Orchestre'] = [];
 		Casting.mm.center.INFO_RANGS['Orchestre']['rang'] = 9;
-		Casting.mm.center.INFO_RANGS['Orchestre']['before'] = "Nain de jardins";
+		Casting.mm.center.INFO_RANGS['Orchestre']['before'] = "Nains de jardin";
 		Casting.mm.center.INFO_RANGS['Orchestre']['next'] = "Ballet National";
 		Casting.mm.center.INFO_RANGS['Orchestre']['max'] = 160;
 		Casting.mm.center.INFO_RANGS['Orchestre']['need'] = 24;
@@ -365,7 +365,7 @@ Casting.mm.center.dispNewInfo = function() {
 	"<span>" + Casting.mm.center.ScenarHTML("Bar lounge") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Colleur d'affiche") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Opéra-Bouffe") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Nain de jardins") + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML("Nains de jardin") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Orchestre") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Ballet National") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Opéra") + "</span> " +
