@@ -52,7 +52,7 @@ Casting.mm.center.INFO_RANGS = [];
 		Casting.mm.center.INFO_RANGS['Non opérationnel']['infotext'] = "";
 	Casting.mm.center.INFO_RANGS['Débutant'] = [];
 		Casting.mm.center.INFO_RANGS['Débutant']['rang'] = 1;
-		Casting.mm.center.INFO_RANGS['Débutant']['before'] = "";
+		Casting.mm.center.INFO_RANGS['Débutant']['before'] = "Non opérationnel";
 		Casting.mm.center.INFO_RANGS['Débutant']['next'] = "Café-théâtre";
 		Casting.mm.center.INFO_RANGS['Débutant']['max'] = 48;
 		Casting.mm.center.INFO_RANGS['Débutant']['need'] = 32;
@@ -308,8 +308,16 @@ Casting.mm.center.dispNewInfo = function() {
 	var rang = Casting.mm.center.INFO_RANGS[rangname]['rang'];
 	var img = Casting.mm.center.INFO_RANGS[rangname]['img'];
 	var next = Casting.mm.center.INFO_RANGS[rangname]['next'];
+
 	var max = Casting.mm.center.INFO_RANGS[rangname]['max'];
 	var need = Casting.mm.center.INFO_RANGS[rangname]['need'];
+
+	var levelup_before = 0;
+	if(Casting.mm.center.INFO_RANGS[rangname]['before'] != ''){
+		levelup_before = Casting.mm.center.INFO_RANGS[Casting.mm.center.INFO_RANGS[rangname]['before']]['lvlup'];
+	}
+
+	var pourcent = Math.floor(( xp - levelup_before) / (lvlup - levelup_before) * 100);
 
 	var div = $("<div>").attr("id", "castingScript").appendTo(".groups");
 
@@ -322,8 +330,8 @@ Casting.mm.center.dispNewInfo = function() {
 	var divRangHTML = '';
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
-			"<div class=\"numb\">" + Math.floor((xp / lvlup) * 100) + "%</div><div class=\"compframe\">" +
-			"<div class=\"fill\" style=\"width: " + Math.floor((xp / lvlup) * 100) + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
+			"<div class=\"numb\">" + pourcent + "%</div><div class=\"compframe\">" +
+			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
 			"</div></div>" +
 			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp) / 25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp) / 25) * 25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
 			((Casting.mm.center.info.userInCast) ? "<div class=\"butWidth\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
