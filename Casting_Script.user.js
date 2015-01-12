@@ -152,24 +152,24 @@ Casting.mm.center.INFO_RANGS = [];
 	Casting.mm.center.INFO_RANGS['Maison de Production'] = [];
 		Casting.mm.center.INFO_RANGS['Maison de Production']['rang'] = 12;
 		Casting.mm.center.INFO_RANGS['Maison de Production']['before'] = "Opéra";
-		Casting.mm.center.INFO_RANGS['Maison de Production']['next'] = "Société événementielle";
+		Casting.mm.center.INFO_RANGS['Maison de Production']['next'] = "Société évenementielle";
 		Casting.mm.center.INFO_RANGS['Maison de Production']['max'] = 208;
 		Casting.mm.center.INFO_RANGS['Maison de Production']['need'] = 24;
 		Casting.mm.center.INFO_RANGS['Maison de Production']['lvlup'] = 2800;
 		Casting.mm.center.INFO_RANGS['Maison de Production']['img'] = "fight";
 		Casting.mm.center.INFO_RANGS['Maison de Production']['infotext'] = "La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>";
-	Casting.mm.center.INFO_RANGS['Société événementielle'] = [];
-		Casting.mm.center.INFO_RANGS['Société événementielle']['rang'] = 13;
-		Casting.mm.center.INFO_RANGS['Société événementielle']['before'] = "Maison de Production";
-		Casting.mm.center.INFO_RANGS['Société événementielle']['next'] = "Légende";
-		Casting.mm.center.INFO_RANGS['Société événementielle']['max'] = 224;
-		Casting.mm.center.INFO_RANGS['Société événementielle']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Société événementielle']['lvlup'] = 3200;
-		Casting.mm.center.INFO_RANGS['Société événementielle']['img'] = "blitz";
-		Casting.mm.center.INFO_RANGS['Société événementielle']['infotext'] = "Débloque l'option Jeu Blitz qui porte les cycles à 1h.<br/>La taille maximale du casting passe à 224 joueurs.<br/><em>Le spectacle vivant, c'est ça qui vous fait vibrer !</em>";
+	Casting.mm.center.INFO_RANGS['Société évenementielle'] = [];
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['rang'] = 13;
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['before'] = "Maison de Production";
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['next'] = "Légende";
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['max'] = 224;
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['need'] = 24;
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['lvlup'] = 3200;
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['img'] = "blitz";
+		Casting.mm.center.INFO_RANGS['Société évenementielle']['infotext'] = "Débloque l'option Jeu Blitz qui porte les cycles à 1h.<br/>La taille maximale du casting passe à 224 joueurs.<br/><em>Le spectacle vivant, c'est ça qui vous fait vibrer !</em>";
 	Casting.mm.center.INFO_RANGS['Légende'] = [];
 		Casting.mm.center.INFO_RANGS['Légende']['rang'] = 14;
-		Casting.mm.center.INFO_RANGS['Légende']['before'] = "Société événementielle";
+		Casting.mm.center.INFO_RANGS['Légende']['before'] = "Société évenementielle";
 		Casting.mm.center.INFO_RANGS['Légende']['next'] = "";
 		Casting.mm.center.INFO_RANGS['Légende']['max'] = 256;
 		Casting.mm.center.INFO_RANGS['Légende']['need'] = 16;
@@ -306,6 +306,7 @@ Casting.mm.center.recupInfo = function() {
 Casting.mm.center.dispNewInfo = function() {
 	var xp = Casting.mm.center.info.stats.xp;
 	var rangname = Casting.mm.center.info.stats.rang;
+	console.log(rangname);
 	var lvlup = Casting.mm.center.INFO_RANGS[rangname]['lvlup'];
 	var rang = Casting.mm.center.INFO_RANGS[rangname]['rang'];
 	var img = Casting.mm.center.INFO_RANGS[rangname]['img'];
@@ -370,7 +371,7 @@ Casting.mm.center.dispNewInfo = function() {
 	"<span>" + Casting.mm.center.ScenarHTML("Ballet National") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Opéra") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Maison de Production") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Société événementielle") + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML("Société évenementielle") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Légende") + "</span>" +
 	"";
 	var divOthInfoContent = $("<div>").addClass("boxContent").css({"padding-left": 0, "text-align": "center"}).html(divOthInfoHTML).appendTo(divOthInfo);
