@@ -339,15 +339,15 @@ Casting.mm.center.dispNewInfo = function() {
 			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp) / 25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp) / 25) * 25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
 			"</div>";
 	}
-	divRangHTML += "<span class=\"spanBox\">Réalistion de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
+	divRangHTML += "<span class=\"spanBox\">Réalisation de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
 		Casting.mm.center.info.stats.optionsunlock + "<br>" +
 		"<span class=\"spanBox\">Rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rangname + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[rangname]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[rangname]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + rang + ")</span><br>";
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML += "<span class=\"spanBox\">Prochain rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + next + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[next]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[next]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + (rang + 1)+ ")</span><br>";
 	}
 
-	divRangHTML += "<span class=\"spanBox\">Nomdre d'acteurs max. :</span> " + max + " personnes<br>" +
-	"<span class=\"spanBox\">Acteurs necessaire :</span> " + need + " personnes<br>" +
+	divRangHTML += "<span class=\"spanBox\">Nombre d'acteurs max. :</span> " + max + " personnes<br>" +
+	"<span class=\"spanBox\">Acteurs nécessaires :</span> " + need + " personnes<br>" +
 	"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> " + Casting.mm.center.info.effect.length + " personnes<br>" +
 		((Casting.mm.center.info.userInCast) ? "<div class=\"floatRejPret\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
 	"<div class=\"floatRejPret\">" + Casting.mm.center.info.btnRejPret + "</div>" +
