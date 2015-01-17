@@ -52,7 +52,7 @@ Casting.mm.center.INFO_RANGS = [];
 		Casting.mm.center.INFO_RANGS['Non opérationnel']['infotext'] = "";
 	Casting.mm.center.INFO_RANGS['Débutant'] = [];
 		Casting.mm.center.INFO_RANGS['Débutant']['rang'] = 1;
-		Casting.mm.center.INFO_RANGS['Débutant']['before'] = "Non opérationnel";
+		Casting.mm.center.INFO_RANGS['Débutant']['before'] = "";
 		Casting.mm.center.INFO_RANGS['Débutant']['next'] = "Café-théâtre";
 		Casting.mm.center.INFO_RANGS['Débutant']['max'] = 48;
 		Casting.mm.center.INFO_RANGS['Débutant']['need'] = 32;
@@ -306,7 +306,6 @@ Casting.mm.center.recupInfo = function() {
 Casting.mm.center.dispNewInfo = function() {
 	var xp = Casting.mm.center.info.stats.xp;
 	var rangname = Casting.mm.center.info.stats.rang;
-	console.log(rangname);
 	var lvlup = Casting.mm.center.INFO_RANGS[rangname]['lvlup'];
 	var rang = Casting.mm.center.INFO_RANGS[rangname]['rang'];
 	var img = Casting.mm.center.INFO_RANGS[rangname]['img'];
@@ -319,7 +318,7 @@ Casting.mm.center.dispNewInfo = function() {
 	if(Casting.mm.center.INFO_RANGS[rangname]['before'] != ''){
 		levelup_before = Casting.mm.center.INFO_RANGS[Casting.mm.center.INFO_RANGS[rangname]['before']]['lvlup'];
 	}
-
+	//console.log('Math.floor(( '+xp+' - '+levelup_before+') / ('+lvlup+' - '+levelup_before+') * 100)');
 	var pourcent = Math.floor(( xp - levelup_before) / (lvlup - levelup_before) * 100);
 
 	var div = $("<div>").attr("id", "castingScript").appendTo(".groups");
