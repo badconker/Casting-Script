@@ -346,7 +346,7 @@ Casting.mm.center.dispNewInfo = function() {
 			"<div class=\"numb\">" + pourcent + "%</div><div class=\"compframe\">" +
 			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
 			"</div></div>" +
-			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + nb_shooting + " tournage(s)" + (nb_tickets_remaining > 0 ? " et "+nb_tickets_remaining + " tickets" : '') +" ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
+			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + nb_shooting + " tournage(s)" + (nb_tickets_remaining > 0 ? " et "+nb_tickets_remaining + " tickets" : '') +" ou alors, " + (lvlup - xp) + " ticket(s)." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
 			"</div>";
 	}
 	divRangHTML += "<span class=\"spanBox\">Réalisation de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
