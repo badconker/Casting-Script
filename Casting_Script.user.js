@@ -38,6 +38,7 @@ Casting.mm.addSlashes = function (text) {
 	return text;
 }
 
+Casting.mm.xp_for_shooting = 25;
 Casting.mm.center = {};
 Casting.mm.center.info = {};
 Casting.mm.center.INFO_RANGS = [];
@@ -330,12 +331,22 @@ Casting.mm.center.dispNewInfo = function() {
 	investHTML.find(".spanBox").remove();
 	investHTML.html(investHTML.html().split("</div><div").join("</div>, <div"));
 	var divRangHTML = '';
+
+	var nb_shooting = Math.floor((lvlup - xp) / Casting.mm.xp_for_shooting);
+	var nb_tickets_remaining = 0;
+	if(nb_shooting > 0){
+		nb_tickets_remaining = (lvlup - xp) % Casting.mm.xp_for_shooting;
+	}else{
+		nb_shooting = 1;
+	}
+
+
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
 			"<div class=\"numb\">" + pourcent + "%</div><div class=\"compframe\">" +
 			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
 			"</div></div>" +
-			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + Math.floor((lvlup - xp) / 25) + " Tournages et " + ((lvlup - xp) - Math.floor((lvlup - xp) / 25) * 25) + " Tickets ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
+			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + nb_shooting + " tournage(s)" + (nb_tickets_remaining > 0 ? " et "+nb_tickets_remaining + " tickets" : '') +" ou alors, " + (lvlup - xp) + " Tickets." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
 			"</div>";
 	}
 	divRangHTML += "<span class=\"spanBox\">Réalisation de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
