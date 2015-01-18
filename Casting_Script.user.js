@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/badconker/Casting-Script/raw/master/Casting_Script.user.js
 // @include     http://mush.vg/g/*
 // @include     http://mush.vg/group/*
-// @version     1.9
+// @version     1.10
 // ==/UserScript==
 
 Casting = function() {}
