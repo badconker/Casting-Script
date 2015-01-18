@@ -249,6 +249,13 @@ Casting.mm.center.recupInfo = function() {
 	$(".twinstyle").each(function(index, data) {
 		$(this).attr("name", $(this).find(".cornerright").text().replace(/\t/g, '').replace(/\n/g, ''));
 	});
+	$bgtablesummar = $('.bgtablesummar');
+	$actors = $bgtablesummar.find('.nameUnit');
+	$actors.sort(function(a, b){
+		return $(a).find('.tid_user').text().toLowerCase().localeCompare( $(b).find('.tid_user').text().toLowerCase() );
+	})
+	$actors.detach().appendTo($bgtablesummar);
+
 	Casting.mm.center.info.username = $("a[href^=\"http://mush.vg/u/profile/\"] span").text();
 	Casting.mm.center.info.nameGroup = $(".glow").text();
 	Casting.mm.center.info.idGroup = $(".groups").attr("data-gid");
