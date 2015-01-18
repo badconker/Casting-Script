@@ -279,7 +279,8 @@ Casting.mm.center.recupInfo = function() {
 							Casting.mm.center.info.stats.realisateur = $(this).html().replace(/\t/g, '').replace(/\n/g, '').split("</span>")[1];
 						break;
 						case 2 : // Options
-							Casting.mm.center.info.stats.optionsunlock = $(this).html();
+							Casting.mm.center.info.stats.optionsunlock = $(this);
+							Casting.mm.center.info.stats.optionsunlock.find('img[src$="use_andrek_grey.png"]').attr('src','http://imgup.motion-twin.com/twinoid/8/7/2a755b31_6238137.jpg');
 						case 3 : // XP ou Inverstit
 							Casting.mm.center.info.stats.xp = text.split(" / ")[0];
 						break;
@@ -350,7 +351,7 @@ Casting.mm.center.dispNewInfo = function() {
 			"</div>";
 	}
 	divRangHTML += "<span class=\"spanBox\">Réalisation de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
-		Casting.mm.center.info.stats.optionsunlock + "<br>" +
+		Casting.mm.center.info.stats.optionsunlock.html() + "<br>" +
 		"<span class=\"spanBox\">Rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rangname + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[rangname]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[rangname]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + rang + ")</span><br>";
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML += "<span class=\"spanBox\">Prochain rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + next + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[next]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[next]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + (rang + 1)+ ")</span><br>";
