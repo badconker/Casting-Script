@@ -5,7 +5,7 @@
 // @downloadURL https://github.com/Javiernh/Casting-Script/raw/master/Casting_Script.user.js
 // @include	http://mush.twinoid.es/group/*
 // @include	http://mush.twinoid.es/g/*
-// @version     1.11
+// @version     1.11.1
 // ==/UserScript==
 
 Casting = function() {}
@@ -17,19 +17,36 @@ Casting.mm.author = "BSimo (remis au goût du jour par badconker)";
 Casting.mm.urlautor = "http://twinoid.com/user/3138322";
 Casting.mm.window = window;
 Casting.mm.location = "";
+Casting.mm.membersorted = [];
 
 Casting.mm.init = function() {
 	var url = Casting.mm.window.location.href;
-	if(url.split("/").length > 5) Casting.mm.location = url.split("/")[5];
-	else Casting.mm.location = "center";
+	if(url.split("/")[3] == "group") {
+		if(isNaN(url.split("/")[4])) Casting.mm.location = url.split("/")[4];
+		else Casting.mm.location = "center";
+	}
+	else Casting.mm.location = url.split("/")[5];
 
 	switch(Casting.mm.location) {
 		case "center":
 			Casting.mm.center.init();
 		break;
 
+		case "members":
+			Casting.mm.SortTableMembers();
+		break;
+
 		default:
 	}
+}
+
+Casting.mm.SortTableMembers = function () {
+	$members = $('.members > .table:eq(0) > tbody');
+	$members_sorted = $members.find('tr');
+	$members_sorted.sort(function(a, b){
+		return $(a).find('.name').text().toLowerCase().localeCompare( $(b).find('.name').text().toLowerCase() );
+	});
+	$members_sorted.detach().appendTo($members);
 }
 
 Casting.mm.addSlashes = function (text) {
@@ -144,24 +161,24 @@ Casting.mm.center.INFO_RANGS = [];
 	Casting.mm.center.INFO_RANGS['Opera'] = [];
 		Casting.mm.center.INFO_RANGS['Opera']['rang'] = 11;
 		Casting.mm.center.INFO_RANGS['Opera']['before'] = "Ballet nacional";
-		Casting.mm.center.INFO_RANGS['Opera']['next'] = "Casa productora";
+		Casting.mm.center.INFO_RANGS['Opera']['next'] = "Productora";
 		Casting.mm.center.INFO_RANGS['Opera']['max'] = 192;
 		Casting.mm.center.INFO_RANGS['Opera']['need'] = 16;
 		Casting.mm.center.INFO_RANGS['Opera']['lvlup'] = 2400;
 		Casting.mm.center.INFO_RANGS['Opera']['img'] = "whos_ugly";
 		Casting.mm.center.INFO_RANGS['Opera']['infotext'] = "Desbloquea la opción Juego sin Mush<br/>La capacidad máxima del reality pasa a 192 jugadores.<br/><em>Un show interplanetario en una luna provinciana.</em>";
-	Casting.mm.center.INFO_RANGS['Casa productora'] = [];
-		Casting.mm.center.INFO_RANGS['Casa productora']['rang'] = 12;
-		Casting.mm.center.INFO_RANGS['Casa productora']['before'] = "Opera";
-		Casting.mm.center.INFO_RANGS['Casa productora']['next'] = "Agencia de organización de eventos";
-		Casting.mm.center.INFO_RANGS['Casa productora']['max'] = 208;
-		Casting.mm.center.INFO_RANGS['Casa productora']['need'] = 16;
-		Casting.mm.center.INFO_RANGS['Casa productora']['lvlup'] = 2800;
-		Casting.mm.center.INFO_RANGS['Casa productora']['img'] = "fight";
-		Casting.mm.center.INFO_RANGS['Casa productora']['infotext'] = "La capacidad máxima del reality pasa a 208 jugadores.<br/><em>El gran espectáculo de luz y sonido en preestreno de un rockero milenario excéntrico.</em>";
+	Casting.mm.center.INFO_RANGS['Productora'] = [];
+		Casting.mm.center.INFO_RANGS['Productora']['rang'] = 12;
+		Casting.mm.center.INFO_RANGS['Productora']['before'] = "Opera";
+		Casting.mm.center.INFO_RANGS['Productora']['next'] = "Agencia de organización de eventos";
+		Casting.mm.center.INFO_RANGS['Productora']['max'] = 208;
+		Casting.mm.center.INFO_RANGS['Productora']['need'] = 16;
+		Casting.mm.center.INFO_RANGS['Productora']['lvlup'] = 2800;
+		Casting.mm.center.INFO_RANGS['Productora']['img'] = "fight";
+		Casting.mm.center.INFO_RANGS['Productora']['infotext'] = "La capacidad máxima del reality pasa a 208 jugadores.<br/><em>El gran espectáculo de luz y sonido en preestreno de un rockero milenario excéntrico.</em>";
 	Casting.mm.center.INFO_RANGS['Agencia de organización de eventos'] = [];
 		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['rang'] = 13;
-		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['before'] = "Casa productora";
+		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['before'] = "Productora";
 		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['next'] = "Leyenda";
 		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['max'] = 224;
 		Casting.mm.center.INFO_RANGS['Agencia de organización de eventos']['need'] = 16;
@@ -400,7 +417,7 @@ Casting.mm.center.dispNewInfo = function() {
 	"<span>" + Casting.mm.center.ScenarHTML("Orquesta") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Ballet nacional") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Opera") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Casa productora") + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML("Productora") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Agencia de organización de eventos") + "</span> " +
 	"<span>" + Casting.mm.center.ScenarHTML("Leyenda") + "</span>" +
 	"";
