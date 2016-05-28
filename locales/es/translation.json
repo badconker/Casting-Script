@@ -113,14 +113,14 @@
 "Prochain rang :" :
 "Próximo rango:" ,
 
-"<span class=\"spanBox\">Nombre d'acteurs max. :</span> {{max}} personnes<br>" :
-"<span class=\"spanBox\">Número máximo de jugadores:</span> {{max}} personas<br>" ,
+"<span class=\'spanBox\'>Nombre d'acteurs max. :</span> {{max}} personnes<br>" :
+"<span class=\'spanBox\'>Número máximo de jugadores:</span> {{max}} personas<br>" ,
 
-"<span class=\"spanBox\">Acteurs nécessaires :</span> {{need}} personnes<br>" :
-"<span class=\"spanBox\">Jugadores necesarios:</span> {{need}} personas<br>" ,
+"<span class=\'spanBox\'>Acteurs nécessaires :</span> {{need}} personnes<br>" :
+"<span class=\'spanBox\'>Jugadores necesarios:</span> {{need}} personas<br>" ,
 
-"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> {{lenght}} personnes<br>" :
-"<span class=\"spanBox\">Número actual de jugadores:</span> {{lenght}} personas<br>" ,
+"<span class=\'spanBox\'>Nombre d'acteurs actuel :</span> {{lenght}} personnes<br>" :
+"<span class=\'spanBox\'>Número actual de jugadores:</span> {{lenght}} personas<br>" ,
 
 "Nombre de tournages terminés :" :
 "Cantidad de partidas acabadas:" ,
