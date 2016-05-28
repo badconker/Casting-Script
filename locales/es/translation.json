@@ -1,3 +1,151 @@
 {"lng": "es", "resources": { "es": { "translation": {
+"Non opérationnel" :
+"No operativo" ,
 
+"Débutant" :
+"Principiante" ,
+
+"Café-théâtre" :
+"Café teatro" ,
+
+"Soldat de fortune" :
+"Soldado de fortuna" ,
+
+"Troupe de province" :
+"Grupillo de provincia" ,
+
+"Bar lounge" :
+"Bar lounge" ,
+
+"Colleur d\'affiche" :
+"Pegador de carteles" ,
+
+"Opéra-Bouffe" :
+"Opera Bufet" ,
+
+"Nains de jardin" :
+"Duendes de jardín" ,
+
+"Orchestre" :
+"Orquesta" ,
+
+"Ballet National" :
+"Ballet nacional" ,
+
+"Opéra" :
+"Opera" ,
+
+"Maison de Production" :
+"Productora" ,
+
+"Société évenementielle" :
+"Organizadora de eventos" ,
+
+"Légende" :
+"Leyenda" ,
+
+"Offert l'option : Mush cachés.<br/>La taille maximale du casting passe à 48 joueurs.<br/><em>Vous êtes un groupe qui s'est réuni pour démarrer la vie d'artiste. Pour l'instant vous en êtes à faire la manche avec une guitare dans le métro à Pyong Yang.</em>" :
+"Da la opción: Mush escondidos<br/>La capacidad máxima del reality pasa a 48 jugadores.<br/><em>Junto a tu grupo has iniciado una vida de artista. Pero para empezar deberás tocar y pasar tu sombrero en el metro de Pyong Yang.</em>" ,
+
+"Débloque l'option Jeu Lent qui porte les cycles à 4 h.<br/>La taille maximale du casting passe à 64 joueurs.<br/><em>On ne s'endort plus pendant vos films... normal personne ne vous regarde.</em>" :
+"Desbloquea la opción de Ciclo Lento con ciclos de 4h.<br/>La capacidad máxima del reality pasa a 64 jugadores.<br/><em>Ya nadie se duerme en tus películas... porque nadie las ve.</em>" ,
+
+"Débloque les Scripts et la Table de Triomphe. Passe le nombre minimal de joueur pour lancer un vaisseau à 24.<br/>La taille maximale du casting passe à 80 joueurs.<br/><em>Vous avez déjà convaincu des gens ? C\'est plus dur que des moutons...quoique...</em>" :
+"Desbloquea los guiones y la Tabla de Gloria. El número de jugadores necesarios para el despegue pasa a 24.<br/>La capacidad máxima del reality pasa a 80 jugadores.<br/><em>¿Ya has convencido a alguien? Es muy difícil, aunque...</em>" ,
+
+"Débloque Andie et Derek !<br/>La taille maximale du casting passe à 88 joueurs.<br/><em>Vous savez haranguer les foules sur les plages de Neptune</em>" :
+"¡Desbloquea a Andie y Dereck!<br/>La capacidad máxima del reality pasa a 88 jugadores.<br/><em>Sabes hacer vibrar a la gente en las playas de Neptuno.</em>" ,
+
+"Débloque l'option Triple Mush.<br/>La taille maximale du casting passe à 104 joueurs.<br/><em>Vous êtes capable de faire un film sans script.</em>" :
+"Desbloquea la opción Triple Mush<br/>La capacidad máxima del reality pasa a 104 jugadores.<br/><em>Eres capaz de hacer una película sin guión.</em>" ,
+
+"Débloque l'option Jeu Beta.<br/>La taille maximale du casting passe à 112 joueurs.<br/><em>Vous avez compris que la comm sert à quelque chose.</em>" :
+"Desbloquea la opción Juego Beta<br/>La capacidad máxima del reality pasa a 112 jugadores.<br/><em>Has comprendido que la publicidad sirve de algo.</em>" ,
+
+"Débloque l'option Jeu Rapide qui porte les cycles à 2h.<br/>La taille maximale du casting passe à 128 joueurs.<br/><em>Vous savez enchaîner deux scènes sans que le décor s\'effondre.</em>" :
+"Desbloquea la opción de Ciclo Rápido con ciclos de 2h.<br/>La capacidad máxima del reality pasa a 128 jugadores.<br/><em>Sabes llevar un espectáculo sin siquiera respirar.</em>" ,
+
+"Débloque le départ manuel des vaisseaux pour ce casting.<br/>La taille maximale du casting passe à 144 joueurs.<br/><em>Vous animez les barbecues Martien efficacement.</em>" :
+"Desbloquea la salida manual de las naves para este grupo.<br/>La capacidad máxima del reality pasa a 144 jugadores.<br/><em>Animas muy bien las barbacoas marcianas.</em>" ,
+
+"La taille maximale du casting passe à 160 joueurs.<br/><em>On peut vous faire confiance pour animer une soirée dans un hospice lunaire.</em>" :
+"La capacidad máxima del reality pasa a 160 jugadores.<br/><em>Podrías animar las fiestas de amebas en Plutón.</em>" ,
+
+"Débloque l'option Mush en sommeil.<br/>La taille maximale du casting passe à 176 joueurs.<br/><em>On a failli vous embaucher pour un grand film une fois.</em>" :
+"Desbloquea la opción Mush Despertando<br/>La capacidad máxima del reality pasa a 176 jugadores.<br/><em>Ya has tenido que rechazar varias giras interplanetarias.</em>" ,
+
+"Débloque l'option Jeu Sans Mush.Passe le nombre minimal de joueur pour lancer un vaisseau à 16.<br/>La taille maximale du casting passe à 192 joueurs.<br/><em>La classe internationale sur une lune de province.</em>" :
+"Desbloquea la opción Juego sin Mush. El número de jugadores necesarios para el despegue pasa a 16.<br/>La capacidad máxima del reality pasa a 192 jugadores.<br/><em>Un show interplanetario en una luna provinciana.</em>" ,
+
+"La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>" :
+"La capacidad máxima del reality pasa a 208 jugadores.<br/><em>El gran espectáculo de luz y sonido en preestreno de un rockero milenario excéntrico.</em>" ,
+
+"Débloque l'option Jeu Blitz qui porte les cycles à 1h.<br/>La taille maximale du casting passe à 224 joueurs.<br/><em>Le spectacle vivant, c'est ça qui vous fait vibrer !</em>" :
+"Desbloquea la opción de Juego Blitz con ciclos de 1h.<br/>La capacidad máxima del reality pasa a 224 jugadores.<br/><em>¡Actuación en directo, eso es lo que te hace vibrar!</em>" ,
+
+"La taille maximale du casting passe à 256 joueurs.<br/><em>Votre spectacle est exceptionnel.</em>" :
+"La capacidad máxima del reality pasa a 256 jugadores.<br/><em>Vuestro espectáculo es excepcional.</em>" ,
+
+"Statistiques" :
+"Estadísticas" ,
+
+"  opérationel" :
+" operacional" ,
+
+"Informations sur ce Casting" :
+"Información del Reality" ,
+
+"<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Expérience</h1>Vous avez {{xp}} points d\\'expérience. Il en faut {{lvlup}} pour accéder au rang suivant. C\\'est-à-dire qu\\'il vous en manque {{lvlupxp}}. Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> investi.</em></div></div></div></div>" :
+"<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experiencia</h1>El Reality tiene {{xp}} puntos de experiencia. Se necesitan {{lvlup}} para subir al siguiente rango. Es decir, faltan {{lvlupxp}}.<br><em>Recuerda, se ganan 25 por nave lanzada y 1 por <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invertido.</em></div></div></div></div>" ,
+
+"Progression jusqu'au niveau suivant" :
+"Progreso hasta el siguiente nivel" ,
+
+"Réalisation de :" :
+"Creación de:" ,
+
+"Rang :" :
+"Rango:" ,
+
+"(Niv. {{rang}})" :
+"(Niv. {{rang}})" ,
+
+"Prochain rang :" :
+"Próximo rango:" ,
+
+"<span class=\"spanBox\">Nombre d'acteurs max. :</span> {{max}} personnes<br>" :
+"<span class=\"spanBox\">Número máximo de jugadores:</span> {{max}} personas<br>" ,
+
+"<span class=\"spanBox\">Acteurs nécessaires :</span> {{need}} personnes<br>" :
+"<span class=\"spanBox\">Jugadores necesarios:</span> {{need}} personas<br>" ,
+
+"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> {{lenght}} personnes<br>" :
+"<span class=\"spanBox\">Número actual de jugadores:</span> {{lenght}} personas<br>" ,
+
+"Nombre de tournages terminés :" :
+"Cantidad de partidas acabadas:" ,
+
+"Investisseurs :" :
+"Inversores:" ,
+
+"Progression Générale" :
+"Progreso General" ,
+
+"Lancement des tournages" :
+"Despegue del reality" ,
+
+"Lancement du vaisseau" :
+"Despegue de la nave" ,
+
+"Acteurs en voyage ailleurs ({{ingame}})" :
+"Jugadores viajando ({{ingame}})" ,
+
+"Acteurs en attente ({{wait}})" :
+"Jugadores en espera ({{wait}})" ,
+
+"Acteurs prêt à partir ({{ready}})" :
+"Jugadores listos ({{ready}})" ,
+
+"Ce casting n'a pas encore débloqué cette option." :
+"Este realtity aún no ha desbloqueado esta opción."
 }}}}
