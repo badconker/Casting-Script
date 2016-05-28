@@ -1,11 +1,18 @@
 // ==UserScript==
 // @name        Casting Script
-// @namespace   Script Mush para los Realities
-// @description Script Mush para los Realities (traducido por Javiernh)
-// @downloadURL https://github.com/Javiernh/Casting-Script/raw/master/Casting_Script.user.js
-// @include	http://mush.twinoid.es/group/*
+// @namespace   Script Mush pour les Castings
+// @description Script Mush pour les Castings
+// @downloadURL https://github.com/badconker/Casting-Script/raw/master/Casting_Script.user.js
+// @include     http://mush.vg/g/*
+// @include     http://mush.vg/group/*
 // @include	http://mush.twinoid.es/g/*
-// @version     1.11.1
+// @include	http://mush.twinoid.es/group/*
+// @grant	GM_getResourceText
+// @require	http://code.jquery.com/jquery-latest.js
+// @require	https://raw.githubusercontent.com/badconker/Casting-Script/master/lib/i18next.js
+// @resource	translation:es https://raw.githubusercontent.com/badconker/Casting-Script/master/locales/es/translation.json
+// @resource	translation:fr https://raw.githubusercontent.com/badconker/Casting-Script/master/locales/fr/translation.json
+// @version     1.11
 // ==/UserScript==
 
 Casting = function() {}
@@ -18,6 +25,28 @@ Casting.mm.urlautor = "http://twinoid.com/user/3138322";
 Casting.mm.window = window;
 Casting.mm.location = "";
 Casting.mm.membersorted = [];
+
+Casting.mm.initLang = function() {
+	switch (document.domain) {
+		case 'mush.twinoid.es': // Spanish
+			Casting.mm.lang = 'es';
+			break;
+		default: // French
+			Casting.mm.lang = 'fr';
+	}
+	try {
+		var translationText = GM_getResourceText('translation:'+ Casting.mm.lang);
+		if (typeof translationText === 'undefined') {
+			console.warn("No translations for '" + Casting.mm.lang + "' languaje.");
+			return;
+		}
+		var translationData = JSON.parse(translationText);
+		i18next.init(translationData);
+		i18next.changeLanguage(Casting.mm.lang);
+	} catch(err) {
+		console.error("Error getting translation data:", err);
+	}
+};	// END FUNCTION - Casting.mm.initLang
 
 Casting.mm.init = function() {
 	var url = Casting.mm.window.location.href;
