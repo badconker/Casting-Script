@@ -104,8 +104,8 @@
 "Expérience" :
 "Experiencia" ,
 
-"Vous avez {{xp}} points d'expérience. Il en faut {{lvlup}} pour accéder au rang suivant. C'est-à-dire qu'il vous en manque {{lvlupxp}}.<br><em>Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par " :
-"El Reality tiene {{xp}} puntos de experiencia. Se necesitan {{lvlup}} para subir al siguiente rango. Es decir, faltan {{lvlupxp}}.<br><em>Recuerda, se ganan 25 por nave lanzada y 1 por " ,
+"Vous avez {{xppoint}} points d'expérience. Il en faut {{xplvlup}} pour accéder au rang suivant. C'est-à-dire qu'il vous en manque {{xplvluprest}}.<br><em>Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par " :
+"El Reality tiene {{xppoint}} puntos de experiencia. Se necesitan {{xplvlup}} para subir al siguiente rango. Es decir, faltan {{xplvluprest}}.<br><em>Recuerda, se ganan 25 por nave lanzada y 1 por " ,
 
 " investi.</em>" :
 " invertido.</em>" ,
