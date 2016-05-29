@@ -116,17 +116,17 @@
 "Progression jusqu'au niveau suivant" :
 "Progreso hasta el siguiente nivel" ,
 
-"Réalisation de :" :
-"Creación de:" ,
+"Réalisation de \:" :
+"Creación de\:" ,
 
-"Rang :" :
-"Rango:" ,
+"Rang \:" :
+"Rango\:" ,
 
 "(Niv. {{rang}})" :
 "(Niv. {{rang}})" ,
 
-"Prochain rang :" :
-"Próximo rango:" ,
+"Prochain rang \:" :
+"Próximo rango\:" ,
 
 "<span class=\"spanBox\">Nombre d'acteurs max. :</span> {{max}} personnes<br>" :
 "<span class=\"spanBox\">Número máximo de jugadores:</span> {{max}} personas<br>" ,
@@ -137,11 +137,11 @@
 "<span class=\"spanBox\">Nombre d'acteurs actuel :</span> {{lenght}} personnes<br>" :
 "<span class=\"spanBox\">Número actual de jugadores:</span> {{lenght}} personas<br>" ,
 
-"Nombre de tournages terminés :" :
-"Cantidad de partidas acabadas:" ,
+"Nombre de tournages terminés \:" :
+"Cantidad de partidas acabadas\:" ,
 
-"Investisseurs :" :
-"Inversores:" ,
+"Investisseurs \:" :
+"Inversores\:" ,
 
 "Progression Générale" :
 "Progreso General" ,
