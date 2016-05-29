@@ -101,9 +101,6 @@
 "Informations sur ce Casting" :
 "Información del Reality" ,
 
-"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Expérience</h1>Vous avez {{xp}} points d\\'expérience. Il en faut {{lvlup}} pour accéder au rang suivant. C\\'est-à-dire qu\\'il vous en manque {{lvlupxp}}.<br><em>Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> investi.</em></div></div></div></div>'" :
-"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experiencia</h1>El Reality tiene {{xp}} puntos de experiencia. Se necesitan {{lvlup}} para subir al siguiente rango. Es decir, faltan {{lvlupxp}}.<br><em>Recuerda, se ganan 25 por nave lanzada y 1 por <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invertido.</em></div></div></div></div>'" ,
-
 "Expérience" :
 "Experiencia" ,
 
