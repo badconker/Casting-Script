@@ -2,7 +2,7 @@
 // @name        Casting Script
 // @namespace   Script Mush pour les Castings
 // @description Script Mush pour les Castings
-// @downloadURL https://github.com/badconker/Casting-Script/raw/master/Casting_Script.user.js
+// @downloadURL https://github.com/Javiernh/Casting-Script/raw/master/Casting_Script.user.js
 // @include     http://mush.vg/g/*
 // @include     http://mush.vg/group/*
 // @include     http://mush.twinoid.*/g/*
@@ -13,7 +13,7 @@
 // @resource    translation:es https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/es/translation.json
 // @resource    translation:fr https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/fr/translation.json
 // @resource    translation:en https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/en/translation.json
-// @version     1.11
+// @version     1.12
 // ==/UserScript==
 
 Casting = function() {}
