@@ -102,7 +102,7 @@
 "Casting information" ,
 
 "castingBarTip" :
-"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experience</h1>The casting have {{castXP}} experience points. They're needed {{castXPnext}} for the next rank. That is, level up in {{castXPneed}}.<br/><em>Remember, earn 25 per completed ship and 1 per <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invested.</em></div></div></div></div>'" ,
+"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experience</h1>The casting have {{castXP}} experience points. They\\'re needed {{castXPnext}} for the next rank. That is, level up in {{castXPneed}}.<br/><em>Remember, earn 25 per completed ship and 1 per <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invested.</em></div></div></div></div>'" ,
 
 "castingBarText" :
 "Progress to the next level" ,
