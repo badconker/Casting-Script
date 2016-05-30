@@ -95,6 +95,9 @@
 "castingInfo" :
 "Informations sur ce Casting" ,
 
+"castingBarTip" :
+"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Expérience</h1>Vous avez {{castXP}} points d\\'expérience. Il en faut {{castXPnext}} pour accéder au rang suivant. C\\'est-à-dire qu\\'il vous en manque {{castXPneed}}. Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> investi.</em></div></div></div></div>'" ,
+
 "castingBarText" :
 "Progression jusqu'au niveau suivant" ,
 
