@@ -9,10 +9,10 @@
 // @include     http://mush.twinoid.*/group/*
 // @grant       GM_getResourceText
 // @require     http://code.jquery.com/jquery-latest.js
-// @require     https://github.com/Javiernh/Casting-Script/raw/Javiernh-multilingual/lib/i18next.js
-// @resource    translation:es https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/es/translation.json
-// @resource    translation:fr https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/fr/translation.json
-// @resource    translation:en https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/en/translation.json
+// @require     https://github.com/Javiernh/Casting-Script/raw/master/lib/i18next.js
+// @resource    translation:es https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/es/translation.json
+// @resource    translation:fr https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/fr/translation.json
+// @resource    translation:en https://raw.githubusercontent.com/Javiernh/Casting-Script/master/locales/en/translation.json
 // @version     1.11
 // ==/UserScript==
 
