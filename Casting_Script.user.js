@@ -16,8 +16,8 @@
 // @version     1.11
 // ==/UserScript==
 
-Casting = function() {}
-Casting.mm = function() {}
+Casting = function() {};
+Casting.mm = function() {};
 Casting.mm.version = 1.0;
 Casting.mm.group = "Les Maîtres Mushiens";
 Casting.mm.urlgroup = "http://mush.vg/g/les-maitres-mushiens";
@@ -71,7 +71,7 @@ Casting.mm.init = function() {
 
 		default:
 	}
-}
+};
 
 Casting.mm.SortTableMembers = function () {
 	$members = $('.members > .table:eq(0) > tbody');
@@ -80,13 +80,13 @@ Casting.mm.SortTableMembers = function () {
 		return $(a).find('.name').text().toLowerCase().localeCompare( $(b).find('.name').text().toLowerCase() );
 	});
 	$members_sorted.detach().appendTo($members);
-}
+};
 
 Casting.mm.addSlashes = function (text) {
 	text = text.replace(/\\/g, "\\\\");
 	text = text.replace(/'/g, "\\'");
 	return text;
-}
+};
 
 Casting.mm.initLang();
 Casting.mm.xp_for_shooting = 25;
@@ -232,7 +232,7 @@ Casting.mm.center.init = function() {
 	Casting.mm.center.css();
 	Casting.mm.center.recupInfo();
 	Casting.mm.center.dispNewInfo();
-}
+};
 
 Casting.mm.center.css = function() {
 	$("<style>").attr("type", "text/css").html("\
@@ -296,7 +296,7 @@ Casting.mm.center.css = function() {
 		}\
 	").appendTo("head");
 	$("<link href=\"http://fonts.googleapis.com/css?family=Days+One\" rel=\"stylesheet\" type=\"text/css\">").appendTo("head");
-}
+};
 
 Casting.mm.center.recupInfo = function() {
 	$("#castingFeed").css({display: "none"});
@@ -307,7 +307,7 @@ Casting.mm.center.recupInfo = function() {
 	$actors = $bgtablesummar.find('.nameUnit');
 	$actors.sort(function(a, b){
 		return $(a).find('.tid_user').text().toLowerCase().localeCompare( $(b).find('.tid_user').text().toLowerCase() );
-	})
+	});
 	$actors.detach().appendTo($bgtablesummar);
 
 	Casting.mm.center.info.username = $("a[href^=\"http://" + document.domain + "/u/profile/\"] span").text();
@@ -316,11 +316,11 @@ Casting.mm.center.recupInfo = function() {
 	Casting.mm.center.info.effect = $(".nameUnit .tid_user");
 	$.each(Casting.mm.center.info.effect, function(index, data) { Casting.mm.center.info.effect[index] = $(this).text().replace(/\t/g, '').replace(/\n/g, ''); });
 	Casting.mm.center.info.effectIG = $("img[src=\"/img/icons/ui/in_game.png\"]");
-	$.each(Casting.mm.center.info.effectIG, function(index, data) { Casting.mm.center.info.effectIG[index] = $(this).parent().html()});
+	$.each(Casting.mm.center.info.effectIG, function(index, data) { Casting.mm.center.info.effectIG[index] = $(this).parent().html();});
 	Casting.mm.center.info.effectWait = $("img[src=\"/img/icons/ui/not_ready.png\"]");
-	$.each(Casting.mm.center.info.effectWait, function(index, data) { Casting.mm.center.info.effectWait[index] = $(this).parent().html()});
+	$.each(Casting.mm.center.info.effectWait, function(index, data) { Casting.mm.center.info.effectWait[index] = $(this).parent().html();});
 	Casting.mm.center.info.effectPret = $("img[src=\"/img/icons/ui/ready.png\"]");
-	$.each(Casting.mm.center.info.effectPret, function(index, data) { Casting.mm.center.info.effectPret[index] = $(this).parent().html()});
+	$.each(Casting.mm.center.info.effectPret, function(index, data) { Casting.mm.center.info.effectPret[index] = $(this).parent().html();});
 	Casting.mm.center.info.userInCast = $(".twinstyle[name=\"" + i18next.t("investment") + "\"]").find(".boxContent").children().length > 0;
 
 	Casting.mm.center.info.btnInvest = (Casting.mm.center.info.userInCast) ? $(".twinstyle[name=\"" + i18next.t("investment") + "\"]").find(".boxContent > div").html() : false;
@@ -342,6 +342,7 @@ Casting.mm.center.recupInfo = function() {
 						case 2 : // Options
 							Casting.mm.center.info.stats.optionsunlock = $(this);
 							Casting.mm.center.info.stats.optionsunlock.find('img[src$="use_andrek_grey.png"]').attr('src','http://imgup.motion-twin.com/twinoid/8/7/2a755b31_6238137.jpg');
+						break;
 						case 3 : // XP ou Inverstit
 							Casting.mm.center.info.stats.xp = text.split(" / ")[0];
 						break;
@@ -355,7 +356,7 @@ Casting.mm.center.recupInfo = function() {
 						case 10 :
 						case 11 : // Investisseurs
 							Casting.mm.center.info.invest = $(this).html();
-						break;	
+						break;
 						default:
 					}
 				});
@@ -364,7 +365,7 @@ Casting.mm.center.recupInfo = function() {
 			default:
 		}
 	});
-}
+};
 
 Casting.mm.center.dispNewInfo = function() {
 	var xp = Casting.mm.center.info.stats.xp;
@@ -423,8 +424,7 @@ Casting.mm.center.dispNewInfo = function() {
 		((Casting.mm.center.info.userInCast) ? "<div class=\"floatRejPret\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
 	"<div class=\"floatRejPret\">" + Casting.mm.center.info.btnRejPret + "</div>" +
 	"<span class=\"spanBox\">" + i18next.t("numberGamesTxt") + "</span> " + Casting.mm.center.info.partieEnd + "<br>" +
-	"<span class=\"spanBox\">" + i18next.t("investorsTxt") + "</span> " + investHTML.html(); +
-	"";
+	"<span class=\"spanBox\">" + i18next.t("investorsTxt") + "</span> " + investHTML.html();
 	var divRangContent = $("<div>").addClass("boxContent").html(divRangHTML).appendTo(divRang);
 
 	var divOthInfoBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
@@ -459,23 +459,23 @@ Casting.mm.center.dispNewInfo = function() {
 	var divEffectIGBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
 	var divEffectIG = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerIG", {ingame: Casting.mm.center.info.effectIG.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectIGBloc);
 	var divEffectIGHTML = "";
-	$.each(Casting.mm.center.info.effectIG, function(index, data) { divEffectIGHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectIG, function(index, data) { divEffectIGHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectIGContent = $("<div>").addClass("boxContent").html(divEffectIGHTML).appendTo(divEffectIG);
 
 	var divEffectWaitBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
 	var divEffectWait = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerWait", {wait: Casting.mm.center.info.effectWait.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectWaitBloc);
 	var divEffectWaitHTML = "";
-	$.each(Casting.mm.center.info.effectWait, function(index, data) { divEffectWaitHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectWait, function(index, data) { divEffectWaitHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectWaitContent = $("<div>").addClass("boxContent").html(divEffectWaitHTML).appendTo(divEffectWait);
 
 	var divEffectPretBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
 	var divEffectPret = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerReady", {ready: Casting.mm.center.info.effectPret.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectPretBloc);
 	var divEffectPretHTML = "";
-	$.each(Casting.mm.center.info.effectPret, function(index, data) { divEffectPretHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectPret, function(index, data) { divEffectPretHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectPretContent = $("<div>").addClass("boxContent").html(divEffectPretHTML).appendTo(divEffectPret);
 
 	$("<div>").addClass("clear").appendTo(div);
-}
+};
 
 Casting.mm.center.ScenarHTML = function(rang) {
 	if(Casting.mm.center.INFO_RANGS[rang]['rang'] <= Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['rang']) {
@@ -483,6 +483,6 @@ Casting.mm.center.ScenarHTML = function(rang) {
 	} else {
 		return "<img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[rang]['img'] +"_grey.png\" onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rang + " <span style='font-size: 7pt; font-style: italic;'>" + i18next.t("lvlRankTxt", {rang: Casting.mm.center.INFO_RANGS[rang]['rang']}) + "</span></h1>" + i18next.t("optionBlock") + "</div></div></div></div>") + "')\">";
 	}
-}
+};
 
 Casting.mm.init();
