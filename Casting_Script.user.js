@@ -5,11 +5,19 @@
 // @downloadURL https://github.com/badconker/Casting-Script/raw/master/Casting_Script.user.js
 // @include     http://mush.vg/g/*
 // @include     http://mush.vg/group/*
+// @include     http://mush.twinoid.*/g/*
+// @include     http://mush.twinoid.*/group/*
+// @grant       GM_getResourceText
+// @require     http://code.jquery.com/jquery-latest.js
+// @require     https://github.com/Javiernh/Casting-Script/raw/Javiernh-multilingual/lib/i18next.js
+// @resource    translation:es https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/es/translation.json
+// @resource    translation:fr https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/fr/translation.json
+// @resource    translation:en https://raw.githubusercontent.com/Javiernh/Casting-Script/Javiernh-multilingual/locales/en/translation.json
 // @version     1.11
 // ==/UserScript==
 
-Casting = function() {}
-Casting.mm = function() {}
+Casting = function() {};
+Casting.mm = function() {};
 Casting.mm.version = 1.0;
 Casting.mm.group = "Les Maîtres Mushiens";
 Casting.mm.urlgroup = "http://mush.vg/g/les-maitres-mushiens";
@@ -17,171 +25,214 @@ Casting.mm.author = "BSimo (remis au goût du jour par badconker)";
 Casting.mm.urlautor = "http://twinoid.com/user/3138322";
 Casting.mm.window = window;
 Casting.mm.location = "";
+Casting.mm.membersorted = [];
+
+Casting.mm.initLang = function() {
+	switch (document.domain) {
+		case 'mush.twinoid.es': // Spanish
+			Casting.mm.lang = 'es';
+			break;
+		case 'mush.twinoid.com': // English
+			Casting.mm.lang = 'en';
+			break;
+		default: // French
+			Casting.mm.lang = 'fr';
+	}
+	try {
+		var translationText = GM_getResourceText('translation:'+ Casting.mm.lang);
+		if (typeof translationText === 'undefined') {
+			console.warn("No translations for '" + Casting.mm.lang + "' languaje.");
+			return;
+		}
+		var translationData = JSON.parse(translationText);
+		i18next.init(translationData);
+		i18next.changeLanguage(Casting.mm.lang);
+	} catch(err) {
+		console.error("Error getting translation data:", err);
+	}
+};	// END FUNCTION - Casting.mm.initLang
 
 Casting.mm.init = function() {
 	var url = Casting.mm.window.location.href;
-	if(url.split("/").length > 5) Casting.mm.location = url.split("/")[5];
-	else Casting.mm.location = "center";
+	if(url.split("/")[3] == "group") {
+		if(isNaN(url.split("/")[4])) Casting.mm.location = url.split("/")[4];
+		else Casting.mm.location = "center";
+	}
+	else Casting.mm.location = url.split("/")[5] || "center";
 
 	switch(Casting.mm.location) {
 		case "center":
 			Casting.mm.center.init();
 		break;
 
+		case "members":
+			Casting.mm.SortTableMembers();
+		break;
+
 		default:
 	}
-}
+};
+
+Casting.mm.SortTableMembers = function () {
+	$members = $('.members > .table:eq(0) > tbody');
+	$members_sorted = $members.find('tr');
+	$members_sorted.sort(function(a, b){
+		return $(a).find('.name').text().toLowerCase().localeCompare( $(b).find('.name').text().toLowerCase() );
+	});
+	$members_sorted.detach().appendTo($members);
+};
 
 Casting.mm.addSlashes = function (text) {
 	text = text.replace(/\\/g, "\\\\");
 	text = text.replace(/'/g, "\\'");
 	return text;
-}
+};
 
+Casting.mm.initLang();
 Casting.mm.xp_for_shooting = 25;
 Casting.mm.center = {};
 Casting.mm.center.info = {};
 Casting.mm.center.INFO_RANGS = [];
-	Casting.mm.center.INFO_RANGS['Non opérationnel'] = [];
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['rang'] = 0;
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['before'] = "";
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['next'] = "Débutant";
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['max'] = 32;
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['need'] = 32;
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['lvlup'] = 50;
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['img'] = "no_mush_bar";
-		Casting.mm.center.INFO_RANGS['Non opérationnel']['infotext'] = "";
-	Casting.mm.center.INFO_RANGS['Débutant'] = [];
-		Casting.mm.center.INFO_RANGS['Débutant']['rang'] = 1;
-		Casting.mm.center.INFO_RANGS['Débutant']['before'] = "";
-		Casting.mm.center.INFO_RANGS['Débutant']['next'] = "Café-théâtre";
-		Casting.mm.center.INFO_RANGS['Débutant']['max'] = 48;
-		Casting.mm.center.INFO_RANGS['Débutant']['need'] = 32;
-		Casting.mm.center.INFO_RANGS['Débutant']['lvlup'] = 25;
-		Casting.mm.center.INFO_RANGS['Débutant']['img'] = "no_mush_bar";
-		Casting.mm.center.INFO_RANGS['Débutant']['infotext'] = "Offert l'option : Mush cachés.<br/>La taille maximale du casting passe à 48 joueurs.<br/><em>Vous êtes un groupe qui s'est réuni pour démarrer la vie d'artiste. Pour l'instant vous en êtes à faire la manche avec une guitare dans le métro à Pyong Yang.</em>";
-	Casting.mm.center.INFO_RANGS['Café-théâtre'] = [];
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['rang'] = 2;
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['before'] = "Débutant";
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['next'] = "Soldat de fortune";
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['max'] = 64;
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['need'] = 32;
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['lvlup'] = 125;
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['img'] = "too_slow";
-		Casting.mm.center.INFO_RANGS['Café-théâtre']['infotext'] = "Débloque l'option Jeu Lent qui porte les cycles à 4 h.<br/>La taille maximale du casting passe à 64 joueurs.<br/><em>On ne s'endort plus pendant vos films... normal personne ne vous regarde.</em>";
-	Casting.mm.center.INFO_RANGS['Soldat de fortune'] = [];
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['rang'] = 3;
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['before'] = "Café-théâtre";
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['next'] = "Troupe de province";
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['max'] = 80;
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['need'] = 32;
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['lvlup'] = 250;
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['img'] = "troopers";
-		Casting.mm.center.INFO_RANGS['Soldat de fortune']['infotext'] = "Débloque les Scripts et la Table de Triomphe. Passe le nombre minimal de joueur pour lancer un vaisseau à 24.<br/>La taille maximale du casting passe à 80 joueurs.<br/><em>Vous avez déjà convaincu des gens ? C\'est plus dur que des moutons...quoique...</em>";
-	Casting.mm.center.INFO_RANGS['Troupe de province'] = [];
-		Casting.mm.center.INFO_RANGS['Troupe de province']['rang'] = 4;
-		Casting.mm.center.INFO_RANGS['Troupe de province']['before'] = "Soldat de fortune";
-		Casting.mm.center.INFO_RANGS['Troupe de province']['next'] = "Bar lounge";
-		Casting.mm.center.INFO_RANGS['Troupe de province']['max'] = 88;
-		Casting.mm.center.INFO_RANGS['Troupe de province']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Troupe de province']['lvlup'] = 400;
-		Casting.mm.center.INFO_RANGS['Troupe de province']['img'] = "mushruvery";
-		Casting.mm.center.INFO_RANGS['Troupe de province']['infotext'] = "Débloque Andie et Derek !<br/>La taille maximale du casting passe à 88 joueurs.<br/><em>Vous savez haranguer les foules sur les plages de Neptune</em>";
-	Casting.mm.center.INFO_RANGS['Bar lounge'] = [];
-		Casting.mm.center.INFO_RANGS['Bar lounge']['rang'] = 5;
-		Casting.mm.center.INFO_RANGS['Bar lounge']['before'] = "Troupe de province";
-		Casting.mm.center.INFO_RANGS['Bar lounge']['next'] = "Colleur d'affiche";
-		Casting.mm.center.INFO_RANGS['Bar lounge']['max'] = 104;
-		Casting.mm.center.INFO_RANGS['Bar lounge']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Bar lounge']['lvlup'] = 600;
-		Casting.mm.center.INFO_RANGS['Bar lounge']['img'] = "triple_play";
-		Casting.mm.center.INFO_RANGS['Bar lounge']['infotext'] = "Débloque l'option Triple Mush.<br/>La taille maximale du casting passe à 104 joueurs.<br/><em>Vous êtes capable de faire un film sans script.</em>";
-	Casting.mm.center.INFO_RANGS['Colleur d\'affiche'] = [];
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['rang'] = 6;
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['before'] = "Bar lounge";
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['next'] = "Opéra-Bouffe";
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['max'] = 112;
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['lvlup'] = 850;
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['img'] = "page";
-		Casting.mm.center.INFO_RANGS['Colleur d\'affiche']['infotext'] = "Débloque l'option Jeu Beta.<br/>La taille maximale du casting passe à 112 joueurs.<br/><em>Vous avez compris que la comm sert à quelque chose.</em>";
-	Casting.mm.center.INFO_RANGS['Opéra-Bouffe'] = [];
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['rang'] = 7;
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['before'] = "Colleur d'affiche";
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['next'] = "Nains de jardin";
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['max'] = 128;
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['lvlup'] = 1100;
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['img'] = "swift_fungus";
-		Casting.mm.center.INFO_RANGS['Opéra-Bouffe']['infotext'] = "Débloque l'option Jeu Rapide qui porte les cycles à 2h.<br/>La taille maximale du casting passe à 128 joueurs.<br/><em>Vous savez enchaîner deux scènes sans que le décor s\'effondre.</em>";
-	Casting.mm.center.INFO_RANGS['Nains de jardin'] = [];
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['rang'] = 8;
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['before'] = "Opéra-Bouffe";
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['next'] = "Orchestre";
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['max'] = 144;
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['lvlup'] = 1400;
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['img'] = "dream_theater";
-		Casting.mm.center.INFO_RANGS['Nains de jardin']['infotext'] = "Débloque le départ manuel des vaisseaux pour ce casting.<br/>La taille maximale du casting passe à 144 joueurs.<br/><em>Vous animez les barbecues Martien efficacement.</em>";
-	Casting.mm.center.INFO_RANGS['Orchestre'] = [];
-		Casting.mm.center.INFO_RANGS['Orchestre']['rang'] = 9;
-		Casting.mm.center.INFO_RANGS['Orchestre']['before'] = "Nains de jardin";
-		Casting.mm.center.INFO_RANGS['Orchestre']['next'] = "Ballet National";
-		Casting.mm.center.INFO_RANGS['Orchestre']['max'] = 160;
-		Casting.mm.center.INFO_RANGS['Orchestre']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Orchestre']['lvlup'] = 1700;
-		Casting.mm.center.INFO_RANGS['Orchestre']['img'] = "beta_phases";
-		Casting.mm.center.INFO_RANGS['Orchestre']['infotext'] = "La taille maximale du casting passe à 160 joueurs.<br/><em>On peut vous faire confiance pour animer une soirée dans un hospice lunaire.</em>";
-	Casting.mm.center.INFO_RANGS['Ballet National'] = [];
-		Casting.mm.center.INFO_RANGS['Ballet National']['rang'] = 10;
-		Casting.mm.center.INFO_RANGS['Ballet National']['before'] = "Orchestre";
-		Casting.mm.center.INFO_RANGS['Ballet National']['next'] = "Opéra";
-		Casting.mm.center.INFO_RANGS['Ballet National']['max'] = 176;
-		Casting.mm.center.INFO_RANGS['Ballet National']['need'] = 24;
-		Casting.mm.center.INFO_RANGS['Ballet National']['lvlup'] = 2050;
-		Casting.mm.center.INFO_RANGS['Ballet National']['img'] = "sleeping_beauty";
-		Casting.mm.center.INFO_RANGS['Ballet National']['infotext'] = "Débloque l'option Mush en sommeil.<br/>La taille maximale du casting passe à 176 joueurs.<br/><em>On a failli vous embaucher pour un grand film une fois.</em>";
-	Casting.mm.center.INFO_RANGS['Opéra'] = [];
-		Casting.mm.center.INFO_RANGS['Opéra']['rang'] = 11;
-		Casting.mm.center.INFO_RANGS['Opéra']['before'] = "Ballet National";
-		Casting.mm.center.INFO_RANGS['Opéra']['next'] = "Maison de Production";
-		Casting.mm.center.INFO_RANGS['Opéra']['max'] = 192;
-		Casting.mm.center.INFO_RANGS['Opéra']['need'] = 16;
-		Casting.mm.center.INFO_RANGS['Opéra']['lvlup'] = 2400;
-		Casting.mm.center.INFO_RANGS['Opéra']['img'] = "whos_ugly";
-		Casting.mm.center.INFO_RANGS['Opéra']['infotext'] = "Débloque l'option Jeu Sans Mush.Passe le nombre minimal de joueur pour lancer un vaisseau à 16.<br/>La taille maximale du casting passe à 192 joueurs.<br/><em>La classe internationale sur une lune de province.</em>";
-	Casting.mm.center.INFO_RANGS['Maison de Production'] = [];
-		Casting.mm.center.INFO_RANGS['Maison de Production']['rang'] = 12;
-		Casting.mm.center.INFO_RANGS['Maison de Production']['before'] = "Opéra";
-		Casting.mm.center.INFO_RANGS['Maison de Production']['next'] = "Société évenementielle";
-		Casting.mm.center.INFO_RANGS['Maison de Production']['max'] = 208;
-		Casting.mm.center.INFO_RANGS['Maison de Production']['need'] = 16;
-		Casting.mm.center.INFO_RANGS['Maison de Production']['lvlup'] = 2800;
-		Casting.mm.center.INFO_RANGS['Maison de Production']['img'] = "fight";
-		Casting.mm.center.INFO_RANGS['Maison de Production']['infotext'] = "La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>";
-	Casting.mm.center.INFO_RANGS['Société évenementielle'] = [];
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['rang'] = 13;
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['before'] = "Maison de Production";
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['next'] = "Légende";
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['max'] = 224;
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['need'] = 16;
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['lvlup'] = 3200;
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['img'] = "blitz";
-		Casting.mm.center.INFO_RANGS['Société évenementielle']['infotext'] = "Débloque l'option Jeu Blitz qui porte les cycles à 1h.<br/>La taille maximale du casting passe à 224 joueurs.<br/><em>Le spectacle vivant, c'est ça qui vous fait vibrer !</em>";
-	Casting.mm.center.INFO_RANGS['Légende'] = [];
-		Casting.mm.center.INFO_RANGS['Légende']['rang'] = 14;
-		Casting.mm.center.INFO_RANGS['Légende']['before'] = "Société évenementielle";
-		Casting.mm.center.INFO_RANGS['Légende']['next'] = "";
-		Casting.mm.center.INFO_RANGS['Légende']['max'] = 256;
-		Casting.mm.center.INFO_RANGS['Légende']['need'] = 16;
-		Casting.mm.center.INFO_RANGS['Légende']['lvlup'] = 0;
-		Casting.mm.center.INFO_RANGS['Légende']['img'] = "legend";
-		Casting.mm.center.INFO_RANGS['Légende']['infotext'] = "La taille maximale du casting passe à 256 joueurs.<br/><em>Votre spectacle est exceptionnel.</em>";
+	Casting.mm.center.INFO_RANGS[i18next.t("rank0")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['rang'] = 0;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['before'] = "";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['next'] = i18next.t("rank1");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['max'] = 32;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['need'] = 32;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['lvlup'] = 50;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['img'] = "no_mush_bar";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank0")]['infotext'] = "";
+	Casting.mm.center.INFO_RANGS[i18next.t("rank1")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['rang'] = 1;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['before'] = "";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['next'] = i18next.t("rank2");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['max'] = 48;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['need'] = 32;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['lvlup'] = 25;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['img'] = "no_mush_bar";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank1")]['infotext'] = i18next.t("infoRank1");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank2")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['rang'] = 2;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['before'] = i18next.t("rank1");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['next'] = i18next.t("rank3");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['max'] = 64;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['need'] = 32;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['lvlup'] = 125;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['img'] = "too_slow";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank2")]['infotext'] = i18next.t("infoRank2");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank3")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['rang'] = 3;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['before'] = i18next.t("rank2");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['next'] = i18next.t("rank4");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['max'] = 80;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['need'] = 32;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['lvlup'] = 250;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['img'] = "troopers";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank3")]['infotext'] = i18next.t("infoRank3");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank4")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['rang'] = 4;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['before'] = i18next.t("rank3");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['next'] = i18next.t("rank5");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['max'] = 88;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['lvlup'] = 400;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['img'] = "mushruvery";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank4")]['infotext'] = i18next.t("infoRank4");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank5")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['rang'] = 5;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['before'] = i18next.t("rank4");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['next'] = i18next.t(i18next.t("rank6"));
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['max'] = 104;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['lvlup'] = 600;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['img'] = "triple_play";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank5")]['infotext'] = i18next.t("infoRank5");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank6")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['rang'] = 6;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['before'] = i18next.t("rank5");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['next'] = i18next.t("rank7");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['max'] = 112;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['lvlup'] = 850;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['img'] = "page";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank6")]['infotext'] = i18next.t("infoRank6");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank7")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['rang'] = 7;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['before'] = i18next.t("rank6");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['next'] = i18next.t("rank8");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['max'] = 128;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['lvlup'] = 1100;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['img'] = "swift_fungus";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank7")]['infotext'] = i18next.t("infoRank7");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank8")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['rang'] = 8;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['before'] = i18next.t("rank7");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['next'] = i18next.t("rank9");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['max'] = 144;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['lvlup'] = 1400;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['img'] = "dream_theater";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank8")]['infotext'] = i18next.t("infoRank8");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank9")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['rang'] = 9;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['before'] = i18next.t("rank8");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['next'] = i18next.t("rank10");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['max'] = 160;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['lvlup'] = 1700;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['img'] = "beta_phases";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank9")]['infotext'] = i18next.t("infoRank9");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank10")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['rang'] = 10;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['before'] = i18next.t("rank9");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['next'] = i18next.t("rank11");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['max'] = 176;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['need'] = 24;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['lvlup'] = 2050;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['img'] = "sleeping_beauty";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank10")]['infotext'] = i18next.t("infoRank10");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank11")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['rang'] = 11;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['before'] = i18next.t("rank10");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['next'] = i18next.t("rank12");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['max'] = 192;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['need'] = 16;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['lvlup'] = 2400;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['img'] = "whos_ugly";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank11")]['infotext'] = i18next.t("infoRank11");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank12")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['rang'] = 12;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['before'] = i18next.t("rank11");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['next'] = i18next.t("rank13");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['max'] = 208;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['need'] = 16;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['lvlup'] = 2800;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['img'] = "fight";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank12")]['infotext'] = i18next.t("infoRank12");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank13")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['rang'] = 13;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['before'] = i18next.t("rank12");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['next'] = i18next.t("rank14");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['max'] = 224;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['need'] = 16;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['lvlup'] = 3200;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['img'] = "blitz";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank13")]['infotext'] = i18next.t("infoRank13");
+	Casting.mm.center.INFO_RANGS[i18next.t("rank14")] = [];
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['rang'] = 14;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['before'] = i18next.t("rank13");
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['next'] = "";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['max'] = 256;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['need'] = 16;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['lvlup'] = 0;
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['img'] = "legend";
+		Casting.mm.center.INFO_RANGS[i18next.t("rank14")]['infotext'] = i18next.t("infoRank14");
 Casting.mm.center.init = function() {
 	Casting.mm.center.css();
 	Casting.mm.center.recupInfo();
 	Casting.mm.center.dispNewInfo();
-}
+};
 
 Casting.mm.center.css = function() {
 	$("<style>").attr("type", "text/css").html("\
@@ -240,9 +291,12 @@ Casting.mm.center.css = function() {
 			margin-right: 10px;\
 			width: 65%;\
 		}\
+		.nameUnit {\
+			min-width: 144px !important;\
+		}\
 	").appendTo("head");
 	$("<link href=\"http://fonts.googleapis.com/css?family=Days+One\" rel=\"stylesheet\" type=\"text/css\">").appendTo("head");
-}
+};
 
 Casting.mm.center.recupInfo = function() {
 	$("#castingFeed").css({display: "none"});
@@ -253,28 +307,28 @@ Casting.mm.center.recupInfo = function() {
 	$actors = $bgtablesummar.find('.nameUnit');
 	$actors.sort(function(a, b){
 		return $(a).find('.tid_user').text().toLowerCase().localeCompare( $(b).find('.tid_user').text().toLowerCase() );
-	})
+	});
 	$actors.detach().appendTo($bgtablesummar);
 
-	Casting.mm.center.info.username = $("a[href^=\"http://mush.vg/u/profile/\"] span").text();
+	Casting.mm.center.info.username = $("a[href^=\"http://" + document.domain + "/u/profile/\"] span").text();
 	Casting.mm.center.info.nameGroup = $(".glow").text();
 	Casting.mm.center.info.idGroup = $(".groups").attr("data-gid");
 	Casting.mm.center.info.effect = $(".nameUnit .tid_user");
 	$.each(Casting.mm.center.info.effect, function(index, data) { Casting.mm.center.info.effect[index] = $(this).text().replace(/\t/g, '').replace(/\n/g, ''); });
 	Casting.mm.center.info.effectIG = $("img[src=\"/img/icons/ui/in_game.png\"]");
-	$.each(Casting.mm.center.info.effectIG, function(index, data) { Casting.mm.center.info.effectIG[index] = $(this).parent().html()});
+	$.each(Casting.mm.center.info.effectIG, function(index, data) { Casting.mm.center.info.effectIG[index] = $(this).parent().html();});
 	Casting.mm.center.info.effectWait = $("img[src=\"/img/icons/ui/not_ready.png\"]");
-	$.each(Casting.mm.center.info.effectWait, function(index, data) { Casting.mm.center.info.effectWait[index] = $(this).parent().html()});
+	$.each(Casting.mm.center.info.effectWait, function(index, data) { Casting.mm.center.info.effectWait[index] = $(this).parent().html();});
 	Casting.mm.center.info.effectPret = $("img[src=\"/img/icons/ui/ready.png\"]");
-	$.each(Casting.mm.center.info.effectPret, function(index, data) { Casting.mm.center.info.effectPret[index] = $(this).parent().html()});
-	Casting.mm.center.info.userInCast = $(".twinstyle[name=\"Investissement\"]").find(".boxContent").children().length > 0;
+	$.each(Casting.mm.center.info.effectPret, function(index, data) { Casting.mm.center.info.effectPret[index] = $(this).parent().html();});
+	Casting.mm.center.info.userInCast = $(".twinstyle[name=\"" + i18next.t("investment") + "\"]").find(".boxContent").children().length > 0;
 
-	Casting.mm.center.info.btnInvest = (Casting.mm.center.info.userInCast) ? $(".twinstyle[name=\"Investissement\"]").find(".boxContent > div").html() : false;
-	Casting.mm.center.info.btnRejPret = $(".twinstyle[name=\"Mes Actions\"]").find(".boxContent").html();
+	Casting.mm.center.info.btnInvest = (Casting.mm.center.info.userInCast) ? $(".twinstyle[name=\"" + i18next.t("investment") + "\"]").find(".boxContent > div").html() : false;
+	Casting.mm.center.info.btnRejPret = $(".twinstyle[name=\"" + i18next.t("myactions") + "\"]").find(".boxContent").html();
 	$(".twinstyle").each(function() {
 		var name = $(this).find(".cornerright").text().replace(/\t/g, '').replace(/\n/g, '');
 		switch(name) {
-			case "Statistiques" :
+			case i18next.t("stats") :
 				Casting.mm.center.info.stats = {};
 				$(this).find("li").each(function(index) {
 					var text = $(this).text().replace(/\t/g, '').replace(/\n/g, '').split(":")[1];
@@ -288,12 +342,13 @@ Casting.mm.center.recupInfo = function() {
 						case 2 : // Options
 							Casting.mm.center.info.stats.optionsunlock = $(this);
 							Casting.mm.center.info.stats.optionsunlock.find('img[src$="use_andrek_grey.png"]').attr('src','http://imgup.motion-twin.com/twinoid/8/7/2a755b31_6238137.jpg');
+						break;
 						case 3 : // XP ou Inverstit
 							Casting.mm.center.info.stats.xp = text.split(" / ")[0];
 						break;
 						case 6 : // Status
-							Casting.mm.center.info.stats.statut = (text == "  opérationel") ? true : false;
-							if(!Casting.mm.center.info.stats.statut) Casting.mm.center.info.stats.rang = "Non opérationnel";
+							Casting.mm.center.info.stats.statut = (text == i18next.t("castingOn")) ? true : false;
+							if(!Casting.mm.center.info.stats.statut) Casting.mm.center.info.stats.rang = i18next.t("rank0");
 						break;
 						case 7 : // Nb de parties achevées
 							Casting.mm.center.info.partieEnd = text;
@@ -301,7 +356,7 @@ Casting.mm.center.recupInfo = function() {
 						case 10 :
 						case 11 : // Investisseurs
 							Casting.mm.center.info.invest = $(this).html();
-						break;	
+						break;
 						default:
 					}
 				});
@@ -310,7 +365,7 @@ Casting.mm.center.recupInfo = function() {
 			default:
 		}
 	});
-}
+};
 
 Casting.mm.center.dispNewInfo = function() {
 	var xp = Casting.mm.center.info.stats.xp;
@@ -324,17 +379,17 @@ Casting.mm.center.dispNewInfo = function() {
 	var need = Casting.mm.center.INFO_RANGS[rangname]['need'];
 
 	var levelup_before = 0;
-	if(Casting.mm.center.INFO_RANGS[rangname]['before'] != ''){
+	if(Casting.mm.center.INFO_RANGS[rangname]['before'] !== ''){
 		levelup_before = Casting.mm.center.INFO_RANGS[Casting.mm.center.INFO_RANGS[rangname]['before']]['lvlup'];
 	}
-	//console.log('Math.floor(( '+xp+' - '+levelup_before+') / ('+lvlup+' - '+levelup_before+') * 100)');
+//	console.log('Math.floor(( '+xp+' - '+levelup_before+') / ('+lvlup+' - '+levelup_before+') * 100)');
 	var pourcent = Math.floor(( xp - levelup_before) / (lvlup - levelup_before) * 100);
 
 	var div = $("<div>").attr("id", "castingScript").appendTo(".groups");
 
 	var divRangBloc = $("<div>").addClass("boxMargin boxTwoWidth").appendTo(div);
-	var divRang = $("<div><h3><div class=\"cornerright\">Informations sur ce Casting</div></h3></div>").addClass("twinstyle").appendTo(divRangBloc);
-	var infobulleXPText = "'<div class=\\\'tiptop\\\'><div class=\\\'tipbottom\\\'><div class=\\\'tipbg\\\'><div class=\\\'tipcontent\\\'><h1>Expérience</h1>Vous avez " + Casting.mm.center.info.stats.xp + " points d\\\'expérience. Il en faut " + Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['lvlup'] + " pour accéder au rang suivant. C\\\'est-à-dire qu\\\'il vous en manque " + (Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['lvlup'] - Casting.mm.center.info.stats.xp) + ". Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> investi.</em></div></div></div></div>'";
+	var divRang = $("<div><h3><div class=\"cornerright\">" + i18next.t("castingInfo") + "</div></h3></div>").addClass("twinstyle").appendTo(divRangBloc);
+	var infobulleXPText = i18next.t("castingBarTip", {castXP: Casting.mm.center.info.stats.xp, castXPnext: Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['lvlup'], castXPneed: (Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['lvlup'] - Casting.mm.center.info.stats.xp)});
 	var investHTML = $("<div>").html(Casting.mm.center.info.invest);
 	investHTML.find(".spanBox").remove();
 	investHTML.html(investHTML.html().split("</div><div").join("</div>, <div"));
@@ -348,54 +403,52 @@ Casting.mm.center.dispNewInfo = function() {
 		nb_shooting = 1;
 	}
 
-
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
 		divRangHTML = "<div class=\"floatInfo\" style=\"text-align: center;\"><div class=\"xpcompletion\" onmouseout=\"Main.hideTip();\" onmouseover=\"Main.showTip(this, " + infobulleXPText + ")\">" +
 			"<div class=\"numb\">" + pourcent + "%</div><div class=\"compframe\">" +
-			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">Progression jusqu'au niveau suivant</div>" +
+			"<div class=\"fill\" style=\"width: " + pourcent + "%;\"></div><div class=\"compText\">" + i18next.t("castingBarText") + "</div>" +
 			"</div></div>" +
-			"<div class=\"floatText\">" + ((rang > 0) ? "Encore " + nb_shooting + " tournage(s)" + (nb_tickets_remaining > 0 ? " et "+nb_tickets_remaining + " ticket(s)" : '') +" ou alors, " + (lvlup - xp) + " ticket(s)." : "Encore " + (lvlup - xp) + " tickets à investir.") + "</div>" +
+			"<div class=\"floatText\">" + ((rang > 0) ? i18next.t("castOnProgTxt1", {count: nb_shooting}) + (nb_tickets_remaining > 0 ? i18next.t("castOnProgTxt2", {count: nb_tickets_remaining}) : '') + i18next.t("castOnProgTxt3", {count: (lvlup - xp)}) : i18next.t("castOffProgTxt", {count: (lvlup - xp)})) + "</div>" +
 			"</div>";
 	}
-	divRangHTML += "<span class=\"spanBox\">Réalisation de :</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
-		Casting.mm.center.info.stats.optionsunlock.html() + "<br>" +
-		"<span class=\"spanBox\">Rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rangname + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[rangname]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[rangname]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + rang + ")</span><br>";
+	divRangHTML += "<span class=\"spanBox\">" + i18next.t("castingCreator") + "</span> " + Casting.mm.center.info.stats.realisateur + "<br>" +
+		Casting.mm.center.info.stats.optionsunlock.html().replace('desbloqueadas', 'desbloq.') + "<br>" +
+		"<span class=\"spanBox\">" + i18next.t("rankTxt") + "</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rangname + " <span style='font-size: 7pt; font-style: italic;'>" + i18next.t("lvlRankTxt", {rang: Casting.mm.center.INFO_RANGS[rangname]['rang']}) + "</span></h1>" + Casting.mm.center.INFO_RANGS[rangname]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + img + ".png\"> " + rangname + " <span style=\"font-size: 7pt; font-style: italic;\">" + i18next.t("lvlRankTxt", {rang: rang}) + "</span><br>";
 	if(typeof(Casting.mm.center.INFO_RANGS[next]) != 'undefined') {
-		divRangHTML += "<span class=\"spanBox\">Prochain rang :</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + next + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[next]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[next]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">(Niv. " + (rang + 1)+ ")</span><br>";
+		divRangHTML += "<span class=\"spanBox\">" + i18next.t("nextRankTxt") + "</span> <img onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + next + " <span style='font-size: 7pt; font-style: italic;'>" + i18next.t("lvlRankTxt", {rang: Casting.mm.center.INFO_RANGS[next]['rang']}) + "</span></h1>" + Casting.mm.center.INFO_RANGS[next]['infotext'] + "</div></div></div></div>") + "')\" src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[next]['img'] + ".png\"> " + next + " <span style=\"font-size: 7pt; font-style: italic;\">" + i18next.t("lvlRankTxt", {rang: rang+1}) + "</span><br>";
 	}
 
-	divRangHTML += "<span class=\"spanBox\">Nombre d'acteurs max. :</span> " + max + " personnes<br>" +
-	"<span class=\"spanBox\">Acteurs nécessaires :</span> " + need + " personnes<br>" +
-	"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> " + Casting.mm.center.info.effect.length + " personnes<br>" +
+	divRangHTML += i18next.t("maxPlayers", {maxplayers: max}) +
+	i18next.t("needPlayers", {needplayers: need}) +
+	i18next.t("numberPlayers", {numberplayers: Casting.mm.center.info.effect.length}) +
 		((Casting.mm.center.info.userInCast) ? "<div class=\"floatRejPret\">" + Casting.mm.center.info.btnInvest + "</div>" : "") +
 	"<div class=\"floatRejPret\">" + Casting.mm.center.info.btnRejPret + "</div>" +
-	"<span class=\"spanBox\">Nombre de tournages terminés :</span> " + Casting.mm.center.info.partieEnd + "<br>" +
-	"<span class=\"spanBox\">Investisseurs :</span> " + investHTML.html(); +
-	"";
+	"<span class=\"spanBox\">" + i18next.t("numberGamesTxt") + "</span> " + Casting.mm.center.info.partieEnd + "<br>" +
+	"<span class=\"spanBox\">" + i18next.t("investorsTxt") + "</span> " + investHTML.html();
 	var divRangContent = $("<div>").addClass("boxContent").html(divRangHTML).appendTo(divRang);
 
 	var divOthInfoBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
 
-	var divOthInfo = $("<div><h3><div class=\"cornerright\">Progression Générale</div></h3></div>").addClass("twinstyle boxMargin").appendTo(divOthInfoBloc);
-	var divOthInfoHTML = "<span>" + Casting.mm.center.ScenarHTML("Débutant") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Café-théâtre") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Soldat de fortune") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Troupe de province") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Bar lounge") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Colleur d'affiche") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Opéra-Bouffe") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Nains de jardin") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Orchestre") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Ballet National") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Opéra") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Maison de Production") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Société évenementielle") + "</span> " +
-	"<span>" + Casting.mm.center.ScenarHTML("Légende") + "</span>" +
+	var divOthInfo = $("<div><h3><div class=\"cornerright\">" + i18next.t("genProgTxt") + "</div></h3></div>").addClass("twinstyle boxMargin").appendTo(divOthInfoBloc);
+	var divOthInfoHTML = "<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank1")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank2")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank3")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank4")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank5")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank6")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank7")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank8")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank9")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank10")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank11")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank12")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank13")) + "</span> " +
+	"<span>" + Casting.mm.center.ScenarHTML(i18next.t("rank14")) + "</span>" +
 	"";
 	var divOthInfoContent = $("<div>").addClass("boxContent").css({"padding-left": 0, "text-align": "center"}).html(divOthInfoHTML).appendTo(divOthInfo);
 
-	var divOthInfo2 = $("<div><h3><div class=\"cornerright\">Lancement des tournages</div></h3></div>").addClass("twinstyle").appendTo(divOthInfoBloc);
-	var divOthInfo2HTML = $(".twinstyle[name=\"Lancement du vaisseau\"] .boxContent").html();
+	var divOthInfo2 = $("<div><h3><div class=\"cornerright\">" + i18next.t("launchShipAltTxt") + "</div></h3></div>").addClass("twinstyle").appendTo(divOthInfoBloc);
+	var divOthInfo2HTML = $(".twinstyle[name=\"" + i18next.t("launchShipTxt") + "\"] .boxContent").html();
 	var divOthInfo2Content = $("<div>").addClass("boxContent").html(divOthInfo2HTML).appendTo(divOthInfo2);
 
 	var divOthInfo3HTML = $("a[href*=\"quit\"]").parent().parent().html();
@@ -404,32 +457,32 @@ Casting.mm.center.dispNewInfo = function() {
 	$("<div>").addClass("clear").appendTo(div);
 
 	var divEffectIGBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
-	var divEffectIG = $("<div><h3><div class=\"cornerright\">Acteurs en voyage ailleurs (" + Casting.mm.center.info.effectIG.length + ")</div></h3></div>").addClass("twinstyle").appendTo(divEffectIGBloc);
+	var divEffectIG = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerIG", {ingame: Casting.mm.center.info.effectIG.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectIGBloc);
 	var divEffectIGHTML = "";
-	$.each(Casting.mm.center.info.effectIG, function(index, data) { divEffectIGHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectIG, function(index, data) { divEffectIGHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectIGContent = $("<div>").addClass("boxContent").html(divEffectIGHTML).appendTo(divEffectIG);
 
 	var divEffectWaitBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
-	var divEffectWait = $("<div><h3><div class=\"cornerright\">Acteurs en attente (" + Casting.mm.center.info.effectWait.length + ")</div></h3></div>").addClass("twinstyle").appendTo(divEffectWaitBloc);
+	var divEffectWait = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerWait", {wait: Casting.mm.center.info.effectWait.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectWaitBloc);
 	var divEffectWaitHTML = "";
-	$.each(Casting.mm.center.info.effectWait, function(index, data) { divEffectWaitHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectWait, function(index, data) { divEffectWaitHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectWaitContent = $("<div>").addClass("boxContent").html(divEffectWaitHTML).appendTo(divEffectWait);
 
 	var divEffectPretBloc = $("<div>").addClass("boxMargin boxWidth").appendTo(div);
-	var divEffectPret = $("<div><h3><div class=\"cornerright\">Acteurs prêt à partir (" + Casting.mm.center.info.effectPret.length + ")</div></h3></div>").addClass("twinstyle").appendTo(divEffectPretBloc);
+	var divEffectPret = $("<div><h3><div class=\"cornerright\">" + i18next.t("playerReady", {ready: Casting.mm.center.info.effectPret.length}) + "</div></h3></div>").addClass("twinstyle").appendTo(divEffectPretBloc);
 	var divEffectPretHTML = "";
-	$.each(Casting.mm.center.info.effectPret, function(index, data) { divEffectPretHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>"});
+	$.each(Casting.mm.center.info.effectPret, function(index, data) { divEffectPretHTML += "<li class=\"nameUnit inl-blck\">" + data + "</li>";});
 	var divEffectPretContent = $("<div>").addClass("boxContent").html(divEffectPretHTML).appendTo(divEffectPret);
 
 	$("<div>").addClass("clear").appendTo(div);
-}
+};
 
 Casting.mm.center.ScenarHTML = function(rang) {
 	if(Casting.mm.center.INFO_RANGS[rang]['rang'] <= Casting.mm.center.INFO_RANGS[Casting.mm.center.info.stats.rang]['rang']) {
-		return "<img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[rang]['img'] +".png\" onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rang + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[rang]['rang'] + ")</span></h1>" + Casting.mm.center.INFO_RANGS[rang]['infotext'] + "</div></div></div></div>") + "')\">";
+		return "<img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[rang]['img'] +".png\" onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rang + " <span style='font-size: 7pt; font-style: italic;'>" + i18next.t("lvlRankTxt", {rang: Casting.mm.center.INFO_RANGS[rang]['rang']}) + "</span></h1>" + Casting.mm.center.INFO_RANGS[rang]['infotext'] + "</div></div></div></div>") + "')\">";
 	} else {
-		return "<img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[rang]['img'] +"_grey.png\" onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rang + " <span style='font-size: 7pt; font-style: italic;'>(Niv. " + Casting.mm.center.INFO_RANGS[rang]['rang'] + ")</span></h1>Ce casting n'a pas encore débloqué cette option.</div></div></div></div>") + "')\">";
+		return "<img src=\"/img/icons/ui/" + Casting.mm.center.INFO_RANGS[rang]['img'] +"_grey.png\" onmouseout=\"Main.hideTip()\" onmouseover=\"Main.showTip(this,'" + Casting.mm.addSlashes("<div class='tiptop' ><div class='tipbottom'><div class='tipbg'><div class='tipcontent'><h1>" + rang + " <span style='font-size: 7pt; font-style: italic;'>" + i18next.t("lvlRankTxt", {rang: Casting.mm.center.INFO_RANGS[rang]['rang']}) + "</span></h1>" + i18next.t("optionBlock") + "</div></div></div></div>") + "')\">";
 	}
-}
+};
 
 Casting.mm.init();

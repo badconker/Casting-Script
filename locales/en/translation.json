@@ -1,0 +1,181 @@
+{"lng": "en", "resources": { "en": { "translation": {
+"rank0" :
+"Not operational" ,
+
+"rank1" :
+"Beginner" ,
+
+"rank2" :
+"Cafe Theatre" ,
+
+"rank3" :
+"Soldier of Fortune" ,
+
+"rank4" :
+"Repertory Company" ,
+
+"rank5" :
+"Bar lounge" ,
+
+"rank6" :
+"Bill Sticker" ,
+
+"rank7" :
+"Pre-Theatre Deal" ,
+
+"rank8" :
+"Garden Gnomes" ,
+
+"rank9" :
+"Orchestra" ,
+
+"rank10" :
+"National Ballet" ,
+
+"rank11" :
+"Opera" ,
+
+"rank12" :
+"Mush Lab" ,
+
+"rank13" :
+"copy_from_game" ,
+
+"rank14" :
+"Legend" ,
+
+"infoRank1" :
+"Offers the option: Hidden Mush.<br/>The maximum size of the casting is now 48 players.<br/><em>You are a group who got together to start living the life of an artist. You are currently busking with a guitar in the Pyong Yang metro.</em>" ,
+
+"infoRank2" :
+"Unblocks the Slow Game option which has cycles of 4h.<br/>The maximum size of the casting is now 64 players.<br/><em>We no longer fall asleep during your films... it's cool, nobody's watching.</em>" ,
+
+"infoRank3" :
+"Have you ever managed to make people do what you want ? It's tougher than with sheep...although...<br/>The maximum size of the casting is now 80 players.<br/><em>Have you ever tried to convince people? It's tougher than with sheep...although...</em>" ,
+
+"infoRank4" :
+"Unblocks Andie and Derek<br/>The maximum size of the casting is now 88 players.<br/><em>You know how to get the crowd going on the beaches of Neptune</em>" ,
+
+"infoRank5" :
+"Unblocks the Triple Mush option.<br/>The maximum size of the casting is now 104 players.<br/><em>You are capable of making a film without a script.</em>" ,
+
+"infoRank6" :
+"Unblocks the Beta Game option.<br/>The maximum size of the casting is now 112 players.<br/><em>You understand now that communication is worthwhile</em>" ,
+
+"infoRank7" :
+"Unblocks the Speed Game option which has cycles of 2h.<br/>The maximum size of the casting is now 128 players.<br/><em>You know how to roll two scenes together without the scenery collapsing</em>" ,
+
+"infoRank8" :
+"Unblocks manual takeoffs for this casting.<br/>The maximum size of the casting is now 144 players.<br/><em>You efficiently organize Martian barbecues</em>" ,
+
+"infoRank9" :
+"The maximum size of the casting is now 160 players.<br/><em>We can trust you to organize a party in a lunar hospice</em>" ,
+
+"infoRank10" :
+"Unblocks the Sleeping Mush option.<br/>The maximum size of the casting is now 176 players.<br/><em>We almost hired you for a big film once !</em>" ,
+
+"infoRank11" :
+"Unblocks the No Mush Game option.<br/>The maximum size of the casting is now 192 players.<br/><em>International Class on a provincial moon</em>" ,
+
+"infoRank12" :
+"The maximum size of the casting is now 208 players.<br/><em>THE sneak-preview of an eccentric billionaire rocker's sound and light show</em>" ,
+
+"infoRank13" :
+"Unblocks the Blitz Game option which has cycles of 1h.<br/>The maximum size of the casting is now 224 players.<br/><em>copy_from_game</em>" ,
+
+"infoRank14" :
+"The maximum size of the casting is now 256 players.<br/><em>copy_from_game</em>" ,
+
+"investment" :
+"Investment" ,
+
+"myactions" :
+"My Actions" ,
+
+"stats" :
+"Statistics" ,
+
+"castingOn" :
+"  operational" ,
+
+"castingInfo" :
+"Casting information" ,
+
+"castingBarTip" :
+"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experience</h1>The casting have {{castXP}} experience points. They\\'re needed {{castXPnext}} for the next rank. That is, level up in {{castXPneed}}.<br/><em>Remember, earn 25 per completed ship and 1 per <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invested.</em></div></div></div></div>'" ,
+
+"castingBarText" :
+"Progress to the next level" ,
+
+"castOffProgTxt" :
+"Still {{count}} ticket to invest." ,
+
+"castOffProgTxt_plural" :
+"Still {{count}} tickets to invest." ,
+
+"castOnProgTxt1" :
+"Still {{count}} filming" ,
+
+"castOnProgTxt1_plural" :
+"Still {{count}} filmings" ,
+
+"castOnProgTxt2" :
+" and {{count}} ticket" ,
+
+"castOnProgTxt2_plural" :
+" and {{count}} tickets" ,
+
+"castOnProgTxt3" :
+" or else {{count}} ticket." ,
+
+"castOnProgTxt3_plural" :
+" or else {{count}} tickets." ,
+
+"castingCreator" :
+"A creation of:" ,
+
+"rankTxt" :
+"Rank:" ,
+
+"lvlRankTxt" :
+"(Lvl. {{rang}})" ,
+
+"nextRankTxt" :
+"Next rank:" ,
+
+"maxPlayers" :
+"<span class=\"spanBox\">Maximun number of players:</span> {{maxplayers}} persons<br>" ,
+
+"needPlayers" :
+"<span class=\"spanBox\">Players necessary:</span> {{needplayers}} persons<br>" ,
+
+"numberPlayers" :
+"<span class=\"spanBox\">Number of actual players:</span> {{numberplayers}} persons<br>" ,
+
+"numberGamesTxt" :
+"Number of games played:" ,
+
+"investorsTxt" :
+"Investors:" ,
+
+"genProgTxt" :
+"General Progress" ,
+
+"launchShipAltTxt" :
+"Launch the filming" ,
+
+"launchShipTxt" :
+"Launch the ship" ,
+
+"playerIG" :
+"Players on a voyage ({{ingame}})" ,
+
+"playerWait" :
+"Players idle ({{wait}})" ,
+
+"playerReady" :
+"Players ready ({{ready}})" ,
+
+"optionBlock" :
+"This casting has not unlocked this option."
+}}}}

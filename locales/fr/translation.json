@@ -1,0 +1,182 @@
+{"lng": "fr", "resources": { "fr": { "translation": {
+"rank0" :
+"Non opérationnel" ,
+
+"rank1" :
+"Débutant" ,
+
+"rank2" :
+"Café-théâtre" ,
+
+"rank3" :
+"Soldat de fortune" ,
+
+"rank4" :
+"Troupe de province" ,
+
+"rank5" :
+"Bar lounge" ,
+
+"rank6" :
+"Colleur d'affiche" ,
+
+"rank7" :
+"Opéra-Bouffe" ,
+
+"rank8" :
+"Nains de jardin" ,
+
+"rank9" :
+"Orchestre" ,
+
+"rank10" :
+"Ballet National" ,
+
+"rank11" :
+"Opéra" ,
+
+"rank12" :
+"Maison de Production" ,
+
+"rank13" :
+"Société évenementielle" ,
+
+"rank14" :
+"Légende" ,
+
+"infoRank1" :
+"Offert l'option : Mush cachés.<br/>La taille maximale du casting passe à 48 joueurs.<br/><em>Vous êtes un groupe qui s'est réuni pour démarrer la vie d'artiste. Pour l'instant vous en êtes à faire la manche avec une guitare dans le métro à Pyong Yang.</em>" ,
+
+"infoRank2" :
+"Débloque l'option Jeu Lent qui porte les cycles à 4 h.<br/>La taille maximale du casting passe à 64 joueurs.<br/><em>On ne s'endort plus pendant vos films... normal personne ne vous regarde.</em>" ,
+
+"infoRank3" :
+"Débloque les Scripts et la Table de Triomphe. Passe le nombre minimal de joueur pour lancer un vaisseau à 24.<br/>La taille maximale du casting passe à 80 joueurs.<br/><em>Vous avez déjà convaincu des gens ? C'est plus dur que des moutons...quoique...</em>" ,
+
+"infoRank4" :
+"Débloque Andie et Derek !<br/>La taille maximale du casting passe à 88 joueurs.<br/><em>Vous savez haranguer les foules sur les plages de Neptune</em>" ,
+
+"infoRank5" :
+"Débloque l'option Triple Mush.<br/>La taille maximale du casting passe à 104 joueurs.<br/><em>Vous êtes capable de faire un film sans script.</em>" ,
+
+"infoRank6" :
+"Débloque l'option Jeu Beta.<br/>La taille maximale du casting passe à 112 joueurs.<br/><em>Vous avez compris que la comm sert à quelque chose.</em>" ,
+
+"infoRank7" :
+"Débloque l'option Jeu Rapide qui porte les cycles à 2h.<br/>La taille maximale du casting passe à 128 joueurs.<br/><em>Vous savez enchaîner deux scènes sans que le décor s'effondre.</em>" ,
+
+"infoRank8" :
+"Débloque le départ manuel des vaisseaux pour ce casting.<br/>La taille maximale du casting passe à 144 joueurs.<br/><em>Vous animez les barbecues Martien efficacement.</em>" ,
+
+"infoRank9" :
+"La taille maximale du casting passe à 160 joueurs.<br/><em>On peut vous faire confiance pour animer une soirée dans un hospice lunaire.</em>" ,
+
+"infoRank10" :
+"Débloque l'option Mush en sommeil.<br/>La taille maximale du casting passe à 176 joueurs.<br/><em>On a failli vous embaucher pour un grand film une fois.</em>" ,
+
+"infoRank11" :
+"Débloque l'option Jeu Sans Mush.Passe le nombre minimal de joueur pour lancer un vaisseau à 16.<br/>La taille maximale du casting passe à 192 joueurs.<br/><em>La classe internationale sur une lune de province.</em>" ,
+
+"infoRank12" :
+"La taille maximale du casting passe à 208 joueurs.<br/><em>LE grand spectacle son et lumière en avant-première d'un rocker excentrique millénaire.</em>" ,
+
+"infoRank13" :
+"Débloque l'option Jeu Blitz qui porte les cycles à 1h.<br/>La taille maximale du casting passe à 224 joueurs.<br/><em>Le spectacle vivant, c'est ça qui vous fait vibrer !</em>" ,
+
+"infoRank14" :
+"La taille maximale du casting passe à 256 joueurs.<br/><em>Votre spectacle est exceptionnel.</em>" ,
+
+"investment" :
+"Investissement" ,
+
+"myactions" :
+"Mes Actions" ,
+
+"stats" :
+"Statistiques" ,
+
+"castingOn" :
+"  opérationel" ,
+
+"castingInfo" :
+"Informations sur ce Casting" ,
+
+"castingBarTip" :
+"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Expérience</h1>Vous avez {{castXP}} points d\\'expérience. Il en faut {{castXPnext}} pour accéder au rang suivant. C\\'est-à-dire qu\\'il vous en manque {{castXPneed}}.<br><em>Pour rappel, vous en gagnez 25 par vaisseau lancé et 1 par <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> investi.</em></div></div></div></div>'" ,
+
+"castingBarText" :
+"Progression jusqu'au niveau suivant" ,
+
+"castOffProgTxt" :
+"Encore {{count}} ticket à investir." ,
+
+"castOffProgTxt_plural" :
+"Encore {{count}} tickets à investir." ,
+
+"castOnProgTxt1" :
+"Encore {{count}} tournage" ,
+
+"castOnProgTxt1_plural" :
+"Encore {{count}} tournages" ,
+
+"castOnProgTxt2" :
+" et {{count}} ticket" ,
+
+"castOnProgTxt2_plural" :
+" et {{count}} tickets" ,
+
+"castOnProgTxt3" :
+" ou alors, {{count}} ticket." ,
+
+"castOnProgTxt3_plural" :
+" ou alors, {{count}} tickets." ,
+
+"castingCreator" :
+"Réalisation de :" ,
+
+"rankTxt" :
+"Rang :" ,
+
+"lvlRankTxt" :
+"(Niv. {{rang}})" ,
+
+"nextRankTxt" :
+"Prochain rang :" ,
+
+"maxPlayers" :
+"<span class=\"spanBox\">Nombre d'acteurs max. :</span> {{maxplayers}} personnes<br>" ,
+
+"needPlayers" :
+"<span class=\"spanBox\">Acteurs nécessaires :</span> {{needplayers}} personnes<br>" ,
+
+"numberPlayers" :
+"<span class=\"spanBox\">Nombre d'acteurs actuel :</span> {{numberplayers}} personnes<br>" ,
+
+"numberGamesTxt" :
+"Nombre de tournages terminés :" ,
+
+"investorsTxt" :
+"Investisseurs :" ,
+
+"genProgTxt" :
+"Progression Générale" ,
+
+"launchShipAltTxt" :
+"Lancement des tournages" ,
+
+"launchShipTxt" :
+"Lancement du vaisseau" ,
+
+"playerIG" :
+"Acteurs en voyage ailleurs ({{ingame}})" ,
+
+"playerWait" :
+"Acteurs en attente ({{wait}})" ,
+
+"playerReady" :
+"Acteurs prêt à partir ({{ready}})" ,
+
+"optionBlock" :
+"Ce casting n'a pas encore débloqué cette option."
+}}}}
+
