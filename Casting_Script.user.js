@@ -13,7 +13,7 @@
 // @resource    translation:es https://github.com/badconker/Casting-Script/raw/master/locales/es/translation.json
 // @resource    translation:fr https://github.com/badconker/Casting-Script/raw/master/locales/fr/translation.json
 // @resource    translation:en https://github.com/badconker/Casting-Script/raw/master/locales/en/translation.json
-// @version     1.11
+// @version     1.12
 // ==/UserScript==
 
 Casting = function() {};
