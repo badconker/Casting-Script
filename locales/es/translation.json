@@ -1,181 +1,69 @@
-{"lng": "es", "resources": { "es": { "translation": {
-"rank0" :
-"No operativo" ,
-
-"rank1" :
-"Principiante" ,
-
-"rank2" :
-"Café teatro" ,
-
-"rank3" :
-"Soldado de fortuna" ,
-
-"rank4" :
-"Grupillo de provincia" ,
-
-"rank5" :
-"Bar lounge" ,
-
-"rank6" :
-"Pegador de carteles" ,
-
-"rank7" :
-"Opera Bufet" ,
-
-"rank8" :
-"Duendes de jardín" ,
-
-"rank9" :
-"Orquesta" ,
-
-"rank10" :
-"Ballet nacional" ,
-
-"rank11" :
-"Opera" ,
-
-"rank12" :
-"Productora" ,
-
-"rank13" :
-"Promotora de eventos" ,
-
-"rank14" :
-"Leyenda" ,
-
-"infoRank1" :
-"Da la opción: Mush escondidos.<br/>La capacidad máxima del reality pasa a 48 jugadores.<br/><em>Junto a tu grupo has iniciado una vida de artista. Pero para empezar deberás tocar y pasar tu sombrero en el metro de Pyong Yang.</em>" ,
-
-"infoRank2" :
-"Desbloquea la opción de Ciclo Lento con ciclos de 4h.<br/>La capacidad máxima del reality pasa a 64 jugadores.<br/><em>Ya nadie se duerme en tus películas... porque nadie las ve.</em>" ,
-
-"infoRank3" :
-"Desbloquea los guiones y la Tabla de Gloria. El número de jugadores necesarios para el despegue pasa a 24.<br/>La capacidad máxima del reality pasa a 80 jugadores.<br/><em>¿Ya has convencido a alguien? Es muy difícil, aunque...</em>" ,
-
-"infoRank4" :
-"¡Desbloquea a Andie y Dereck!<br/>La capacidad máxima del reality pasa a 88 jugadores.<br/><em>Sabes hacer vibrar a la gente en las playas de Neptuno.</em>" ,
-
-"infoRank5" :
-"Desbloquea la opción Triple Mush.<br/>La capacidad máxima del reality pasa a 104 jugadores.<br/><em>Eres capaz de hacer una película sin guión.</em>" ,
-
-"infoRank6" :
-"Desbloquea la opción Juego Beta.<br/>La capacidad máxima del reality pasa a 112 jugadores.<br/><em>Has comprendido que la publicidad sirve de algo.</em>" ,
-
-"infoRank7" :
-"Desbloquea la opción de Ciclo Rápido con ciclos de 2h.<br/>La capacidad máxima del reality pasa a 128 jugadores.<br/><em>Sabes llevar un espectáculo sin siquiera respirar.</em>" ,
-
-"infoRank8" :
-"Desbloquea la salida manual de las naves para este grupo.<br/>La capacidad máxima del reality pasa a 144 jugadores.<br/><em>Animas muy bien las barbacoas marcianas.</em>" ,
-
-"infoRank9" :
-"La capacidad máxima del reality pasa a 160 jugadores.<br/><em>Podrías animar las fiestas de amebas en Plutón.</em>" ,
-
-"infoRank10" :
-"Desbloquea la opción Mush Despertando.<br/>La capacidad máxima del reality pasa a 176 jugadores.<br/><em>Ya has tenido que rechazar varias giras interplanetarias.</em>" ,
-
-"infoRank11" :
-"Desbloquea la opción Juego sin Mush. El número de jugadores necesarios para el despegue pasa a 16.<br/>La capacidad máxima del reality pasa a 192 jugadores.<br/><em>Un show interplanetario en una luna provinciana.</em>" ,
-
-"infoRank12" :
-"La capacidad máxima del reality pasa a 208 jugadores.<br/><em>El gran espectáculo de luz y sonido en preestreno de un rockero milenario excéntrico.</em>" ,
-
-"infoRank13" :
-"Desbloquea la opción Juego Blitz con ciclos de 1h.<br/>La capacidad máxima del reality pasa a 224 jugadores.<br/><em>¡El espectáculo te da la vida!</em>" ,
-
-"infoRank14" :
-"La capacidad máxima del reality pasa a 256 jugadores.<br/><em>Vuestro espectáculo es excepcional.</em>" ,
-
-"investment" :
-"Inversión" ,
-
-"myactions" :
-"Mis acciones" ,
-
-"stats" :
-"Estadísticas" ,
-
-"castingOn" :
-"  operacional" ,
-
-"castingInfo" :
-"Información del Reality" ,
-
-"castingBarTip" :
-"'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experiencia</h1>El Reality tiene {{castXP}} puntos de experiencia. Se necesitan {{castXPnext}} para subir al siguiente rango. Es decir, faltan {{castXPneed}}.<br/><em>Recuerda, se ganan 25 por nave lanzada y 1 por <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invertido.</em></div></div></div></div>'" ,
-
-"castingBarText" :
-"Progreso hasta el siguiente nivel" ,
-
-"castOffProgTxt" :
-"Falta {{count}} ticket por invertir." ,
-
-"castOffProgTxt_plural" :
-"Faltan {{count}} tickets por invertir." ,
-
-"castOnProgTxt1" :
-"Falta {{count}} partida" ,
-
-"castOnProgTxt1_plural" :
-"Faltan {{count}} partidas" ,
-
-"castOnProgTxt2" :
-" y {{count}} ticket" ,
-
-"castOnProgTxt2_plural" :
-" y {{count}} tickets" ,
-
-"castOnProgTxt3" :
-" o {{count}} ticket." ,
-
-"castOnProgTxt3_plural" :
-" o {{count}} tickets." ,
-
-"castingCreator" :
-"Creación de:" ,
-
-"rankTxt" :
-"Rango:" ,
-
-"lvlRankTxt" :
-"(Niv. {{rang}})" ,
-
-"nextRankTxt" :
-"Próximo rango:" ,
-
-"maxPlayers" :
-"<span class=\"spanBox\">Número máximo de jugadores:</span> {{maxplayers}} personas<br>" ,
-
-"needPlayers" :
-"<span class=\"spanBox\">Jugadores necesarios:</span> {{needplayers}} personas<br>" ,
-
-"numberPlayers" :
-"<span class=\"spanBox\">Número actual de jugadores:</span> {{numberplayers}} personas<br>" ,
-
-"numberGamesTxt" :
-"Cantidad de partidas acabadas:" ,
-
-"investorsTxt" :
-"Inversores:" ,
-
-"genProgTxt" :
-"Progreso General" ,
-
-"launchShipAltTxt" :
-"Despegue del reality" ,
-
-"launchShipTxt" :
-"Despegue de la nave" ,
-
-"playerIG" :
-"Jugadores viajando ({{ingame}})" ,
-
-"playerWait" :
-"Jugadores en espera ({{wait}})" ,
-
-"playerReady" :
-"Jugadores listos ({{ready}})" ,
-
-"optionBlock" :
-"Este realtity aún no ha desbloqueado esta opción."
-}}}}
+{
+  "lng": "es",
+  "resources": {
+    "es": {
+      "translation": {
+        "rank0": "No operativo",
+        "rank1": "Principiante",
+        "rank2": "Café teatro",
+        "rank3": "Soldado de fortuna",
+        "rank4": "Grupillo de provincia",
+        "rank5": "Bar lounge",
+        "rank6": "Pegador de carteles",
+        "rank7": "Opera Bufet",
+        "rank8": "Duendes de jardín",
+        "rank9": "Orquesta",
+        "rank10": "Ballet nacional",
+        "rank11": "Opera",
+        "rank12": "Productora",
+        "rank13": "Promotora de eventos",
+        "rank14": "Leyenda",
+        "infoRank1": "Da la opción: Mush escondidos.<br/>La capacidad máxima del reality pasa a 48 jugadores.<br/><em>Junto a tu grupo has iniciado una vida de artista. Pero para empezar deberás tocar y pasar tu sombrero en el metro de Pyong Yang.</em>",
+        "infoRank2": "Desbloquea la opción de Ciclo Lento con ciclos de 4h.<br/>La capacidad máxima del reality pasa a 64 jugadores.<br/><em>Ya nadie se duerme en tus películas... porque nadie las ve.</em>",
+        "infoRank3": "Desbloquea los guiones y la Tabla de Gloria. El número de jugadores necesarios para el despegue pasa a 24.<br/>La capacidad máxima del reality pasa a 80 jugadores.<br/><em>¿Ya has convencido a alguien? Es muy difícil, aunque...</em>",
+        "infoRank4": "¡Desbloquea a Andie y Dereck!<br/>La capacidad máxima del reality pasa a 88 jugadores.<br/><em>Sabes hacer vibrar a la gente en las playas de Neptuno.</em>",
+        "infoRank5": "Desbloquea la opción Triple Mush.<br/>La capacidad máxima del reality pasa a 104 jugadores.<br/><em>Eres capaz de hacer una película sin guión.</em>",
+        "infoRank6": "Desbloquea la opción Juego Beta.<br/>La capacidad máxima del reality pasa a 112 jugadores.<br/><em>Has comprendido que la publicidad sirve de algo.</em>",
+        "infoRank7": "Desbloquea la opción de Ciclo Rápido con ciclos de 2h.<br/>La capacidad máxima del reality pasa a 128 jugadores.<br/><em>Sabes llevar un espectáculo sin siquiera respirar.</em>",
+        "infoRank8": "Desbloquea la salida manual de las naves para este grupo.<br/>La capacidad máxima del reality pasa a 144 jugadores.<br/><em>Animas muy bien las barbacoas marcianas.</em>",
+        "infoRank9": "La capacidad máxima del reality pasa a 160 jugadores.<br/><em>Podrías animar las fiestas de amebas en Plutón.</em>",
+        "infoRank10": "Desbloquea la opción Mush Despertando.<br/>La capacidad máxima del reality pasa a 176 jugadores.<br/><em>Ya has tenido que rechazar varias giras interplanetarias.</em>",
+        "infoRank11": "Desbloquea la opción Juego sin Mush. El número de jugadores necesarios para el despegue pasa a 16.<br/>La capacidad máxima del reality pasa a 192 jugadores.<br/><em>Un show interplanetario en una luna provinciana.</em>",
+        "infoRank12": "La capacidad máxima del reality pasa a 208 jugadores.<br/><em>El gran espectáculo de luz y sonido en preestreno de un rockero milenario excéntrico.</em>",
+        "infoRank13": "Desbloquea la opción Juego Blitz con ciclos de 1h.<br/>La capacidad máxima del reality pasa a 224 jugadores.<br/><em>¡El espectáculo te da la vida!</em>",
+        "infoRank14": "La capacidad máxima del reality pasa a 256 jugadores.<br/><em>Vuestro espectáculo es excepcional.</em>",
+        "investment": "Inversión",
+        "myactions": "Mis acciones",
+        "stats": "Estadísticas",
+        "castingOn": "  operacional",
+        "castingInfo": "Información del Reality",
+        "castingBarTip": "'<div class=\\'tiptop\\'><div class=\\'tipbottom\\'><div class=\\'tipbg\\'><div class=\\'tipcontent\\'><h1>Experiencia</h1>El Reality tiene {{castXP}} puntos de experiencia. Se necesitan {{castXPnext}} para subir al siguiente rango. Es decir, faltan {{castXPneed}}.<br/><em>Recuerda, se ganan 25 por nave lanzada y 1 por <img src=&quot;/img/icons/ui/ticket_any.png&quot; style=&quot;display:inline-block; vertical-align:text-bottom;&quot;/> invertido.</em></div></div></div></div>'",
+        "castingBarText": "Progreso hasta el siguiente nivel",
+        "castOffProgTxt": "Falta {{count}} ticket por invertir.",
+        "castOffProgTxt_plural": "Faltan {{count}} tickets por invertir.",
+        "castOnProgTxt1": "Falta {{count}} partida",
+        "castOnProgTxt1_plural": "Faltan {{count}} partidas",
+        "castOnProgTxt2": " y {{count}} ticket",
+        "castOnProgTxt2_plural": " y {{count}} tickets",
+        "castOnProgTxt3": " o {{count}} ticket.",
+        "castOnProgTxt3_plural": " o {{count}} tickets.",
+        "castingCreator": "Creación de:",
+        "rankTxt": "Rango:",
+        "lvlRankTxt": "(Niv. {{rang}})",
+        "nextRankTxt": "Próximo rango:",
+        "maxPlayers": "<span class=\"spanBox\">Número máximo de jugadores:</span> {{maxplayers}} personas<br>",
+        "needPlayers": "<span class=\"spanBox\">Jugadores necesarios:</span> {{needplayers}} personas<br>",
+        "numberPlayers": "<span class=\"spanBox\">Número actual de jugadores:</span> {{numberplayers}} personas<br>",
+        "numberGamesTxt": "Cantidad de partidas acabadas:",
+        "investorsTxt": "Inversores:",
+        "genProgTxt": "Progreso General",
+        "launchShipAltTxt": "Despegue del reality",
+        "launchShipTxt": "Despegue de la nave",
+        "playerIG": "Jugadores viajando ({{ingame}})",
+        "playerWait": "Jugadores en espera ({{wait}})",
+        "playerReady": "Jugadores listos ({{ready}})",
+        "optionBlock": "Este realtity aún no ha desbloqueado esta opción."
+      }
+    }
+  }
+}
