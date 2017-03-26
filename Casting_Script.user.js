@@ -13,12 +13,12 @@
 // @resource    translation:es https://github.com/badconker/Casting-Script/raw/master/locales/es/translation.json
 // @resource    translation:fr https://github.com/badconker/Casting-Script/raw/master/locales/fr/translation.json
 // @resource    translation:en https://github.com/badconker/Casting-Script/raw/master/locales/en/translation.json
-// @version     1.12
+// @version     1.13
 // ==/UserScript==
 
 Casting = function() {};
 Casting.mm = function() {};
-Casting.mm.version = 1.0;
+Casting.mm.version = GM_info.script.version;
 Casting.mm.group = "Les Maîtres Mushiens";
 Casting.mm.urlgroup = "http://mush.vg/g/les-maitres-mushiens";
 Casting.mm.author = "BSimo (remis au goût du jour par badconker)";
